@@ -1,6 +1,7 @@
 # EnterpriseCo
-a Simple Business Website Template created wit bootstrap
+a Simple Business Website Template bulit with Bootstrap and HTML
+DEMO: https://blackhacker511.github.io/EnterpriseCo
 
-## this template is Free please don't remove the copyright
+## this template is Free please don't remove the footer
 
 Created by DarkSoftwareCo@SnakeDesign
