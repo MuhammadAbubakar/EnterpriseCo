@@ -16,6 +16,10 @@ v1.0
 Initial Release
 ```
 
-## this template is Free please don't remove the designer name from the footer
+## Copyright
 
-Created by DarkSoftwareCo@SnakeDesign
+this template is Free please don't remove the developer name from the footer
+
+Developed by SnakeDesign
+
+DarkSoftwareCo - 2019
