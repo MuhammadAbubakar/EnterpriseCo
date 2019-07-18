@@ -13,7 +13,7 @@ v1.5
   4. Secure Contact Form
   
 v1.0
-Initial Release
+  - Initial Release
 ```
 
 ## Copyright
