@@ -11,6 +11,13 @@ v1.5
   2. Animated Navbar
   3. 404 Page
   4. Secure Contact Form
+    - XSS Filter
+    - Name Validator
+    - Email Checker
+    - Message Cleaner
+    - MySQL Integration
+    
+    
   
 v1.0
   - Initial Release
