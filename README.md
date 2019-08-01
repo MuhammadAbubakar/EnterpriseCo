@@ -15,6 +15,7 @@ v2.0
     - You can answare your clients orders using your dashboard
     - Full WYSIWYG Integration using SCEditor
     - Secure Login / Regeister / Password Recovery System
+    
 
 v1.5
   1. New Pricing Table
@@ -35,7 +36,7 @@ v1.0
 
 ## Coming Soon
 ```
-
+-Frontend Editor
 ```
 
 ## Copyright
