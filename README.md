@@ -59,6 +59,9 @@ v3.0
   - Website Settings [ Title, Description, Favicon ]
   - Built-in CMS System [ Posts, Comments, and Like System ]
   - User Manager
+  - MailChimp Integration
+  - Advanced Dashboard
+  - Ajax Requests insted of normal HTML Submits
   
 ```
 
