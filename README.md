@@ -7,7 +7,14 @@ DEMO: https://blackhacker511.github.io/EnterpriseCo
 
 ```
 v2.0
-1. Full RTL Support [ تم تغير لغة المشروع للعربي ]
+  1. Full RTL Support [ تم تغير لغة المشروع للعربي ]
+  2. Simple Dashboard System
+    - You can review your clients request
+    - You can change the ticket status [ Open / Pending / Closed ]
+    - Full Email Integration
+    - You can answare your clients orders using your dashboard
+    - Full WYSIWYG Integration using SCEditor
+    - Secure Login / Regeister / Password Recovery System
 
 v1.5
   1. New Pricing Table
@@ -28,13 +35,7 @@ v1.0
 
 ## Coming Soon
 ```
-  1. Simple Dashboard System
-    - You can review your clients request
-    - You can change the ticket status [ Open / Pending / Closed ]
-    - Full Email Integration
-    - You can answare your clients orders using your dashboard
-    - Full WYSIWYG Integration using SCEditor
-    - Secure Login / Regeister System
+
 ```
 
 ## Copyright
