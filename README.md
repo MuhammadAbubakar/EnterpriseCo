@@ -30,7 +30,7 @@ v1.0
 ```
   1. Simple Dashboard System
     - You can review your clients request
-    - You can change the ticket statius [ Open / Pending / Closed ]
+    - You can change the ticket status [ Open / Pending / Closed ]
     - Full Email Integration
     - You can answare your clients orders using your dashboard
     - Full WYSIWYG Integration using SCEditor
