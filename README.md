@@ -6,6 +6,9 @@ DEMO: https://blackhacker511.github.io/EnterpriseCo
 ## Change Logs
 
 ```
+v2.0
+1. Full RTL Support [ تم تغير لغة المشروع للعربي ]
+
 v1.5
   1. New Pricing Table
   2. Animated Navbar
