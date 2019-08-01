@@ -30,6 +30,7 @@ v1.0
     - You can change the ticket statius [ Open / Pending / Closed ]
     - Full Email Integration
     - You can answare your clients orders using your dashboard
+    - Full WYSIWYG Integration using SCEditor
     - Secure Login / Regeister System
 ```
 
