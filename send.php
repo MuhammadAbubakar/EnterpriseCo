@@ -1,5 +1,5 @@
 <?php
-require 'config.php';
+require 'admin/config.php';
 $fname = '';
 $lname = '';
 $email = '';
@@ -8,10 +8,10 @@ $message = '';
 
 $_GET   = filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
 $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-$time=date("l jS \of Y h:i:s A");
-$ip = $_SERVER['REMOTE_ADDR'];
+
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
+$token = md5(uniqid(rand(), true));
 
 $fname =  $_POST['fname'];
 $lname = $_POST['lname'];
@@ -20,7 +20,7 @@ $name = $fname.' '.$lname;
 if(isset($name) && $name != ''){
 	$name = test_input($name);
     if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-    $nameErr = "Only letters and white space allowed";
+    $nameErr = "الرجاء كتابة الاسم بالنجليزي";
     }
 	} else {
 	$name = '';
@@ -51,23 +51,23 @@ if(isset($_POST['message']) && $_POST['message'] != ''){
 if(isset($name) && $name != '' && isset($_POST['email']) && $email != '' && isset($_POST['message']) && $message != '' && isset($_POST['subject']) && $subject != ''){
 
 	if(isset($emailErr)) {
-		$messageerror = "Invalid email address";
+		$messageerror = "الرجاء التأكد من البريد الألكتروني";
 
 		} elseif(isset($nameErr)) {
-		$messageerror = "In name Only letters and white space allowed";
+		$messageerror = "بالاسم فقط الحروف والمساحة البيضاء مسموح بها";
 
 	} else {
-
-	  $ins_sql = "INSERT INTO messages (name,email,subject,message,time,ip) VALUES ('$name','$email','$subject','$message','$time','$ip')";
+	  $status = "Open";
+	  $ins_sql = "INSERT INTO Orders (FullName,Email,OrderNum,Subject,Message,Status) VALUES ('$name','$email','$token','$subject','$message','$status')";
     $run_sql = mysqli_query($conn,$ins_sql);
 
    $fname = $lname = $name = $email = $subject = $message = "";
-	$messagesend = "Thank You, We will contact you soon.";
+	$messagesend = "شكرا لك ، سوف نتصل بك قريبا";
 
 	}
 
 } elseif(!isset($name) || $name == '' || !isset($_POST['email']) || $email == '' || !isset($_POST['message']) || $message == '' || !isset($_POST['subject']) || $subject == '') {
-	$messageerror = "Please fill in all fields.";
+	$messageerror = "يرجى تعبئة جميع الحقول.";
 }
 
 }
