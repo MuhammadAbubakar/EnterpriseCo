@@ -1,13 +1,14 @@
+
 <?php
 require 'send.php';
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
-	<title>EnterpriseCo - Contact Us</title>
-	<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+ <title>EnterpriseCo - اتصل بنا</title>
+ <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//cdn.rawgit.com/morteza/bootstrap-rtl/v3.3.4/dist/css/bootstrap-rtl.min.css">
     <link rel="shortcut icon" href="http://icons.iconarchive.com/icons/chanut/role-playing/128/Monster-icon.png">
     <link rel="stylesheet" href="src/css/bootstrap.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -20,14 +21,18 @@ require 'send.php';
     <script type="text/javascript" src="src/js/imgload.js"></script>
     <script type="text/javascript" src="src/js/cookies.js"></script>
     <style type="text/css">
-    	.pt{
-			padding: 150px 0px 50px 0px;
-    	}
+     .pt{
+   padding: 200px 0px 50px 0px;
+     }
+
+     .msg_container{
+      width: 100px;
+     }
     </style>
 </head>
 <body class="d-flex flex-column h-100">
-	
-	<nav class="navbar navbar-expand-md navbar-dark bg-primary hidden-lg-up">
+ 
+ <nav class="navbar navbar-expand-md navbar-dark bg-primary hidden-lg-up">
     <div class="container">
     <a class="navbar-brand" href="#">EnterpriseCo</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,34 +40,55 @@ require 'send.php';
   </button>
 
   <div class="collapse navbar-collapse" id="navbarColor02">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#">اﻟﺮﺋﻴﺴﻴﻪ<span class="sr-only">(current)</span></a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" data-easing="easeInQuad" href="#services">Services</a>
+        <a class="nav-link" data-easing="easeInQuad" href="#services">ﺧﺪاﻣﺎﺗﻨﺎ</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-easing="easeInQuad" href="#pricing">Prices</a>
+        <a class="nav-link" data-easing="easeInQuad" href="#pricing">اﻻﺳﻌﺎﺭ</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-easing="easeInQuad" href="#team">Our Team</a>
+        <a class="nav-link" data-easing="easeInQuad" href="#team">ﻓﺮﻳﻖ اﻟﻌﻤﻞ</a>
       </li>
     </ul>
- <ul class="navbar-nav ml-auto">
+ <ul class="navbar-nav mr-auto">
   <li class="nav-item">
-  <a href="#"><button class="btn btn-primary">Contact Us</button></a>
+  <a href="#"><button class="btn btn-primary">اﺗﺼﻞ ﺑﻨﺎ</button></a>
   </li>
  </ul>
   </div>
 </div>
  </nav>
+
  <div class="wrapper pt">
- 	<div class="flex-shrink-0">
-	<div class="h2 text-center">
-		<h2>Contact Us</h2>
-	</div>
+
+      <?php
+      echo '<div class="container">';
+         echo '<div class="form-row justify-content-center">';
+            echo '<div class="text-center">';
+              if(isset($messagesend)) {
+                echo '<br />';
+                echo '<div class="alert alert-success" role="alert"><b class="text-white">'.$messagesend."</b></div>";
+
+                } elseif(isset($messageerror)) {
+                  echo '<br />';
+                  echo '<div class="alert alert-danger" role="alert"><b class="text-white">'.$messageerror."</b></div>";
+                } else {
+                  // Nothing
+                }
+                echo '</div>';
+              echo '</div>';
+            echo '</div>';
+             ?>
+              
+  <div class="flex-shrink-0">
+ <div class="h2 text-center">
+  <h2>اﺗــﺼــﻞ ﺑــﻨــﺎ</h2>
+ </div>
 
    <form method='POST' class='form-signin'>
 
@@ -71,10 +97,10 @@ require 'send.php';
       <input id="fname" name="fname" type="text" class="form-control" 
         <?php
             if(!isset($_POST['fname'])) {
-                    echo 'placeholder="First Name"';
+                    echo 'placeholder="اﻻﺳﻢ اﻻﻭﻝ"';
                   } else { 
                    if($fname == '') {
-                      echo 'placeholder="First Name"';
+                      echo 'placeholder="اﻻﺳﻢ اﻻﻭﻝ"';
                     } else {
                     echo 'value='.'"'.$fname.'"';
                   }
@@ -87,10 +113,10 @@ require 'send.php';
 
         <?php
             if(!isset($_POST['lname'])) {
-                    echo 'placeholder="Last Name"';
+                    echo 'placeholder="اﻻﺳﻢ اﻻﺧﻴﺮ"';
                   } else { 
                    if($lname == '') {
-                      echo 'placeholder="Last Name"';
+                      echo 'placeholder="اﻻﺳﻢ اﻻﺧﻴﺮ"';
                     } else {
                     echo 'value='.'"'.$lname.'"';
                   }
@@ -104,10 +130,10 @@ require 'send.php';
       <input id="email" name="email" type='email' class='form-control' 
         <?php
             if(!isset($_POST['email'])) {
-                    echo 'placeholder="Enter email"';
+                    echo 'placeholder="اﻟﺒﺮﻳﺪ اﻷﻟﻜﺘﺮﻭﻧﻲ"';
                   } else { 
                    if($email == '') {
-                      echo 'placeholder="Enter email"';
+                      echo 'placeholder="اﻟﺒﺮﻳﺪ اﻷﻟﻜﺘﺮﻭﻧﻲ"';
                     } else {
                     echo 'value='.'"'.$email.'"';
                   }
@@ -120,10 +146,10 @@ require 'send.php';
       <input id="subject" name="subject" type='text' class='form-control' 
         <?php
             if(!isset($_POST['subject'])) {
-                    echo 'placeholder="Subject"';
+                    echo 'placeholder="اﻟﻌﺘﻮاﻥ"';
                   } else { 
                    if($subject == '') {
-                      echo 'placeholder="Subject"';
+                      echo 'placeholder="اﻟﻌﻨﻮاﻥ"';
                     } else {
                     echo 'value='.'"'.$subject.'"';
                   }
@@ -135,10 +161,10 @@ require 'send.php';
     <div class='form-group'>
           <textarea required wrap='soft' class ="form-control" name="message" id="message" rows="5" <?php
                   if(!isset($_POST['message'])) {
-                      echo 'wrap="soft" rows="5" placeholder="Enter your message."'.">".'</textarea>';
+                      echo 'wrap="soft" rows="5" placeholder="اﺩﺧﻞ ﺭﺳﺎﻟﺘﻚ ﻫﻨﺎ."'.">".'</textarea>';
                     } else {
                         if($message == '') {
-                          echo 'wrap="soft" rows="5" placeholder="Enter your message."'.">".'</textarea>';
+                          echo 'wrap="soft" rows="5" placeholder="اﺩﺧﻞ ﺭﺳﺎﻟﺘﻚ ﻫﻨﺎ."'.">".'</textarea>';
                          } else {
                       echo ">".$message.'</textarea>';
                     } 
@@ -149,27 +175,10 @@ require 'send.php';
   <div class="form-group">
     <div class="custom-control custom-checkbox text-center">
       <input type="checkbox" class="custom-control-input" id="customCheck1" required>
-      <label class="custom-control-label" for="customCheck1">I'm a Human</label>
+      <label class="custom-control-label" for="customCheck1">اﻧﺎ ﻟﺴﺖ ﺭﻭﺑﻮﺕ</label>
     </div>
   </div>
-
-      <button type='submit' class='btn btn-primary btn-block'>Submit</button>
-                <?php   
-            echo '<div class="text-center"';
-              if(isset($messagesend)) {
-               
-                echo '<br />';
-                echo '<div class="alert alert-success" role="alert"><b class="text-white">'.$messagesend."</b></div>";
-
-                } elseif(isset($messageerror)) {
-                  echo '<br />';
-                  echo '<div class="alert alert-danger" role="alert"><b class="text-white">'.$messageerror."</b></div>";
-                } else {
-                  // Nothing
-                }
-                echo '</div>';
-                ?>
-
+      <button type='submit' class='btn btn-primary btn-block'>اﺭﺳﺎﻝ اﻟﺮﺳﺎﻟﺔ</button>
     </form>
     <!-- Footer -->
 
@@ -179,7 +188,7 @@ require 'send.php';
 
 
 
- <div class="container my-md-5 pt-md-5 footer mt-auto py-3 navbar-fixed-bottom">
+ <div class="container my-md-5 footer navbar-fixed-bottom">
   <div class="container text-center pt-5">
     <ul class="list-inline h4">
       <li class="list-inline-item circle"><a href="#"><i class="onhover fa fa-twitter fa-stack circle-twitter"></i></a></li>
@@ -187,19 +196,21 @@ require 'send.php';
       <li class="list-inline-item circle"><a href="#"><i class="onhover fa fa-linkedin fa-stack circle-linkedin"></i></a></li>
       <li class="list-inline-item circle"><a href="#"><i class="onhover fa fa-instagram fa-stack circle-instagram"></i></a></li>
       <li class="list-inline-item circle"><a href="#"><i class="onhover fa fa-snapchat-ghost fa-stack circle-snapchat"></i></a></li>
+      <li></li>
     </ul>
 </div>
   <footer class="pt-4 my-md-5 pt-md-5 border-top footer mt-auto py-3">
     <div class="row">
       <div class="col-12 col-md">
         <img class="mb-2" src="src/img/beard.svg" alt="" width="30" height="30" class="img-fluid">
-        <small class="d-block mb-3 text-muted">&copy; 2017-2019 - Made with <span class="fa fa-heart"></span> by SnakeDesign</small>
+        <small class="d-block mb-3 text-muted">&copy; 2017-2019 - ﺻﻨﻊ ﺑﻜﻞ <span class="fa fa-heart"></span>ﻣﻦ ﻗﺒﻞ ﺳﻨﻴﻚ ﺩﻳﺰاﻳﻦ</small>
     <ul class="list-inline">
       <li class="list-inline-item payment"><i class="fa fa-cc-paypal"></i></li>
       <li class="list-inline-item payment"><i class="fa fa-cc-visa"></i></li>
       <li class="list-inline-item payment"><i class="fa fa-cc-mastercard"></i></li>
       <li class="list-inline-item payment"><i class="fa fa-cc-discover"></i></li>
       <li class="list-inline-item payment"><i class="fa fa-cc-amex"></i></li>
+      <li></li>
     </ul>
       </div>
       <div class="col-6 col-md">
@@ -230,6 +241,7 @@ require 'send.php';
           <li><a class="link" href="#">Locations</a></li>
           <li><a class="link" href="#">Privacy</a></li>
           <li><a class="link" href="#">Terms</a></li>
+          <li></li>
         </ul>
       </div>
     </div>
