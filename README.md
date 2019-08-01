@@ -13,7 +13,7 @@ v2.0
     - You can change the ticket status [ Open / Pending / Closed ]
     - Full Email Integration
     - You can answare your clients orders using your dashboard
-    - Full WYSIWYG Integration using SCEditor
+    - Full WYSIWYG Integration using Modifed SCEditor [ New Colors ]
     - Secure Login / Regeister / Password Recovery System
     
 
@@ -36,7 +36,13 @@ v1.0
 
 ## Coming Soon
 ```
--Frontend Editor
+
+v3.0
+  - Frontend Editor
+  - Word Filter
+  - User Manager
+  - Website Settings [ Title, Description, Favicon ]
+  
 ```
 
 ## Copyright
