@@ -1,7 +1,22 @@
 # EnterpriseCo
-a Simple Business Website Template bulit with Bootstrap and HTML
+a Simple Business Website Software bulit with Bootstrap and PHP
 
-DEMO: https://blackhacker511.github.io/EnterpriseCo
+نظام مواقع مبني للشركات مصمم بال اتش تي ام ال و البوت ستراب 
+
+## ScreenShot
+![](https://2.top4top.net/p_1308xza0f1.png)
+
+![](https://3.top4top.net/p_1308b7sq82.png)
+
+![](https://4.top4top.net/p_1308n0e053.png)
+
+![](https://5.top4top.net/p_1308s240m4.png)
+
+![](https://6.top4top.net/p_1308lz4za5.png)
+
+![](https://1.top4top.net/p_13081bhim6.png)
+
+![](https://2.top4top.net/p_13086iqc27.png)
 
 ## Change Logs
 
@@ -42,12 +57,14 @@ v3.0
   - Word Filter
   - User Manager
   - Website Settings [ Title, Description, Favicon ]
+  - Built-in CMS System [ Posts, Comments, and Like System ]
+  - User Manager
   
 ```
 
 ## Copyright
 
-this template is Free please don't remove the developer name from the footer
+this software is Free please don't remove the developer name from the footer
 
 Developed by SnakeDesign
 
