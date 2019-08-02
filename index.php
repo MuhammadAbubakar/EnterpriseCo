@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
    <title>EnterpriseCo - Home</title>
    <?php include "tags.php" ?>
@@ -21,7 +21,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" data-easing="easeInQuad" href="#services">خداماتنا</a>
+        <a class="nav-link" data-easing="easeInQuad" href="#services">خدماتنا</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" data-easing="easeInQuad" href="#pricing">الاسعار</a>
@@ -67,7 +67,7 @@
   <div class="container pt-3 pb-3 containers-service" id="services">
    <div class="row ">
     <div class="col-md-12 text-center">
-     <h1 class="display-4">خداماتنا</h1>
+     <h1 class="display-4">خدماتنا</h1>
      <p>الخدامات الي نقدمها للعملاء.</p>
     </div>
    <div class="col-md-4 pt-3">
@@ -186,12 +186,13 @@
         <!-- Team item -->
         <div class="col-xl-3 col-sm-6 mb-5">
             <div class="bg-white rounded shadow-sm py-5 px-4 drawb"><img src="src/img/teacher-4.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
-                <h5 class="mb-0">Manuella Nevoresky</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+                <h5 class="mb-0">مانويلا نيفوريسكي</h5><span class="small text-uppercase text-muted">الرئيس التنفيذي - مؤسس</span>
                 <ul class="social mb-0 list-inline mt-3">
                     <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
                     <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
                     <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
                     <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                    <li></li>
                 </ul>
             </div>
         </div><!-- End -->
@@ -199,12 +200,13 @@
         <!-- Team item -->
         <div class="col-xl-3 col-sm-6 mb-5">
             <div class="bg-white rounded shadow-sm py-5 px-4 drawb"><img src="src/img/teacher-2.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
-                <h5 class="mb-0">Samuel Hardy</h5><span class="small text-uppercase text-muted">Co-Founder</span>
+                <h5 class="mb-0">صموئيل هاردي</h5><span class="small text-uppercase text-muted">شريك مؤسس</span>
                 <ul class="social mb-0 list-inline mt-3">
                     <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
                     <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
                     <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
                     <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                    <li></li>
                 </ul>
             </div>
         </div><!-- End -->
@@ -212,12 +214,13 @@
         <!-- Team item -->
         <div class="col-xl-3 col-sm-6 mb-5">
             <div class="bg-white rounded shadow-sm py-5 px-4 drawb"><img src="src/img/teacher-1.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
-                <h5 class="mb-0">Tom Sunderland</h5><span class="small text-uppercase text-muted">HR Manager</span>
+                <h5 class="mb-0">توم ساندرلاند</h5><span class="small text-uppercase text-muted">مدير الموارد البشرية</span>
                 <ul class="social mb-0 list-inline mt-3">
                     <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
                     <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
                     <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
                     <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                    <li></li>
                 </ul>
             </div>
         </div><!-- End -->
@@ -226,12 +229,13 @@
         <div class="col-xl-3 col-sm-6 mb-5">
             <div class="bg-white rounded shadow-sm py-5 px-4 drawb">
              <img src="src/img/teacher-7.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
-                <h5 class="mb-0">John Tarly</h5><span class="small text-uppercase text-muted">Support Department</span>
+                <h5 class="mb-0">جون تارلي</h5><span class="small text-uppercase text-muted">قسم الدعم</span>
                 <ul class="social mb-0 list-inline mt-3">
                     <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
                     <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
                     <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
                     <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                    <li></li>
                 </ul>
             </div>
         </div><!-- End -->
@@ -254,7 +258,7 @@
      <div class="item carousel-item active">
       <div class="img-box"><img src="src/img/1.jpg" alt=""></div>
       <p class="testimonial">لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود تيمبور أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد مينيم فينايم,كيواس نوستريد أكسير سيتاشن يللأمكو لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات .</p>
-      <p class="overview"><b>Paula Wilson</b>, Media Analyst</p>
+      <p class="overview"><b>بولا ويلسون</b>, محللة إعلاميه</p>
       <div class="star-rating">
        <ul class="list-inline">
         <li class="list-inline-item"><i class="fa fa-star"></i></li>
@@ -262,6 +266,7 @@
         <li class="list-inline-item"><i class="fa fa-star"></i></li>
         <li class="list-inline-item"><i class="fa fa-star"></i></li>
         <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
+        <li></li>
        </ul>
       </div>
      </div>
@@ -269,7 +274,7 @@
      <div class="item carousel-item">
       <div class="img-box"><img src="src/img/2.jpg" alt=""></div>
       <p class="testimonial">لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود تيمبور أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد مينيم فينايم,كيواس نوستريد أكسير سيتاشن يللأمكو لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات .</p>
-      <p class="overview"><b>Antonio Moreno</b>, Web Developer</p>
+      <p class="overview"><b>أنطونيو مورينو</b>, مطور ويب</p>
       <div class="star-rating">
        <ul class="list-inline">
         <li class="list-inline-item"><i class="fa fa-star"></i></li>
@@ -277,6 +282,7 @@
         <li class="list-inline-item"><i class="fa fa-star"></i></li>
         <li class="list-inline-item"><i class="fa fa-star"></i></li>
         <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
+        <li></li>
        </ul>
       </div>
      </div>
@@ -285,7 +291,7 @@
      <div class="item carousel-item">
       <div class="img-box"><img src="src/img/3.jpg" alt=""></div>
       <p class="testimonial">لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود تيمبور أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد مينيم فينايم,كيواس نوستريد أكسير سيتاشن يللأمكو لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات .</p>
-      <p class="overview"><b>Michael Holz</b>, Seo Analyst</p>
+      <p class="overview"><b>مايكل هولز</b>, محلل</p>
       <div class="star-rating">
        <ul class="list-inline">
         <li class="list-inline-item"><i class="fa fa-star"></i></li>
@@ -293,6 +299,7 @@
         <li class="list-inline-item"><i class="fa fa-star"></i></li>
         <li class="list-inline-item"><i class="fa fa-star"></i></li>
         <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
+        <li></li>
        </ul>
       </div>
      </div>
@@ -373,7 +380,7 @@
     <div class="row">
       <div class="col-12 col-md">
         <img class="mb-2" src="src/img/beard.svg" alt="" width="30" height="30" class="img-fluid">
-        <small class="d-block mb-3 text-muted">&copy; 2017-2019 - صنع بكل <span class="fa fa-heart"></span>من قبل سنيك ديزاين</small>
+        <small class="d-block mb-3 text-muted">&copy; 2017-2019 - صنع بكل <span style="color: #e74c3c;" class="fa fa-heart"></span> من قبل سنيك ديزاين</small>
     <ul class="list-inline">
       <li class="list-inline-item payment">
 		  <i class="fa fa-cc-paypal"></i>

@@ -1,0 +1,5 @@
+<?php
+// EnterpriseCo Functions
+
+
+?>

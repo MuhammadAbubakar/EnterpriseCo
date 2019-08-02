@@ -29,7 +29,7 @@ require 'send.php';
   <div class="collapse navbar-collapse" id="navbarColor02">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">اﻟﺮﺋﻴﺴﻴﻪ<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="index.php">اﻟﺮﺋﻴﺴﻴﻪ<span class="sr-only">(current)</span></a>
       </li>
 
       <li class="nav-item">
@@ -192,7 +192,7 @@ require 'send.php';
     <div class="row">
       <div class="col-12 col-md">
         <img class="mb-2" src="src/img/beard.svg" alt="" width="30" height="30" class="img-fluid">
-        <small class="d-block mb-3 text-muted">&copy; 2017-2019 - ﺻﻨﻊ ﺑﻜﻞ <span class="fa fa-heart"></span>ﻣﻦ ﻗﺒﻞ ﺳﻨﻴﻚ ﺩﻳﺰاﻳﻦ</small>
+        <small class="d-block mb-3 text-muted">&copy; 2017-2019 - ﺻﻨﻊ ﺑﻜﻞ <span style="color: #e74c3c;" class="fa fa-heart"></span> ﻣﻦ ﻗﺒﻞ ﺳﻨﻴﻚ ﺩﻳﺰاﻳﻦ</small>
     <ul class="list-inline">
       <li class="list-inline-item payment"><i class="fa fa-cc-paypal"></i></li>
       <li class="list-inline-item payment"><i class="fa fa-cc-visa"></i></li>
