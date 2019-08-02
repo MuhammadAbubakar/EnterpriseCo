@@ -55,7 +55,7 @@
 <br><br>
 
 <section class="container">
-    <p class="p">إذا تبغا تستعين بخدامتنا الرجاء الاتصال بنا</p>
+    <p class="p">إذا تبغا تستعين خدماتنا الرجاء الاتصال بنا</p>
 </section>
   <p class="lead">
     <a class="btn btn-primary btn-lg" href="contact.php" role="button">طلب خدمة</a>
