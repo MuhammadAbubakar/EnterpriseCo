@@ -72,4 +72,7 @@ this software is Free please don't remove the developer name from the footer
 Developed by SnakeDesign
 
 DarkSoftwareCo - 2019
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5512fd9394930f0221b94a95d63916ba5d8cf981
