@@ -4,7 +4,7 @@ class Database
 	private $username = "root";
 	private $password = "farisksa511";
 	private $host = "localhost";
-	private $db_name = "test9";
+	private $db_name = "panel";
 	private $charset = "utf8mb4";
 
 	public function Connect(){
