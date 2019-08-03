@@ -1,46 +1,20 @@
 <?php
-require 'config.php';
-include 'session.php';
-header('Content-Type:text/html; charset=UTF-8');
-$id = $_GET['id'];
-$retriveorders = "SELECT * FROM Orders WHERE id='$id'";
-mysqli_query($conn,"SET NAMES 'utf8'");
-$printorders = mysqli_query($conn,$retriveorders);
-$rows = mysqli_fetch_array($printorders, MYSQLI_ASSOC);
-if ($login_session != $row['username']){
-    exit(header("Location: logout.php"));
-}
+require 'session.php';
+require '../functions/config.inc.php';
+include '../functions/orders.php';
+
+$view = new Order;
+$rows = $view->getOrder($_GET['id']);
+
 if (isset($_GET['status'])) {
-switch ($_GET['status']) {
-  case "Open":
-      $sql = "UPDATE Orders SET Status='Open' WHERE id='$id'";
-      $UpdateStatus = mysqli_query($conn,$sql);
-    break;
-
-    case "Close":
-      $sql = "UPDATE Orders SET Status='Close' WHERE id='$id'";
-      $UpdateStatus = mysqli_query($conn,$sql);
-    break;
-
-    case "Pending":
-      $sql = "UPDATE Orders SET Status='Pending' WHERE id='$id'";
-      $UpdateStatus = mysqli_query($conn,$sql);
-    break;
-}
+  $view -> setStatus($_GET['id'],$_GET['status']);
 }
 
-if (isset($_GET['email'])) {
-$header = "From: noreply@example.com\r\n"; 
-$header.= "MIME-Version: 1.0\r\n"; 
-$header.= "Content-type: text/html; charset=iso-8859-1\r\n"; 
-$header.= "X-Priority: 1\r\n";
-mail($_POST['email'], $_POST['subject'], $_POST['comment'],$header);
-
-   $sendmsg = "Message has been send"; 
-
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+  if (isset($_POST['email'])) {
+    $sendmsg = $view->sendEmail($_POST['email'],$_POST['subject'],$_POST['message']);
+  }
 }
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,8 +55,8 @@ mail($_POST['email'], $_POST['subject'], $_POST['comment'],$header);
           </ol>
 
 <div class="card mx-auto" style="width: 50rem;">
-  <div class="card-header"><?php echo "Ticket Number : #".$rows['OrderNum']."<br>"."Subject : ".$rows['Subject']; ?> </div>
-  <div class="card-body" charset="UTF-8"><?php  echo  $rows['Message']; ?></div>
+  <div class="card-header"><?php echo "Ticket Number : #".$rows->OrderNum."<br>"."Subject : ".$rows->Subject; ?> </div>
+  <div class="card-body" charset="UTF-8"><?php  echo  $rows->Message?></div>
   <div class="card-footer">
 <form>
 <div class="dropdown">
@@ -108,12 +82,12 @@ mail($_POST['email'], $_POST['subject'], $_POST['comment'],$header);
 
 
     <div class='form-group pt-3'>
-      <input id="email" name="email" type='email' class='form-control' value=" <?php echo $rows['Email']; ?>" 
+      <input id="email" name="email" type='email' class='form-control' value=" <?php echo $rows->Email; ?>" 
       required> 
     </div>
 
     <div class='form-group'>
-      <input id="subject" name="subject" type='text' value="Reply: <?php echo($rows['Subject']); ?>" class='form-control' 
+      <input id="subject" name="subject" type='text' value="Reply: <?php echo($rows->Subject); ?>" class='form-control' 
        required>
     </div>
 

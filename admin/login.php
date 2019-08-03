@@ -1,19 +1,23 @@
 <?php
-  include 'config.php';
+  include '../functions/config.inc.php';
    session_start();
    if($_SERVER["REQUEST_METHOD"] == "POST") {
-      $myusername = strip_tags($_POST['Username']);
-      $mypassword = strip_tags(md5($_POST['Password'])); 
-      $sql = "SELECT * FROM admin WHERE username = '$myusername' AND password = '$mypassword'";
-      $result = mysqli_query($conn,$sql);
-      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      $count = mysqli_num_rows($result);
-      if($count == 1) {
-      if($row['role'] == "administrator"){
-       $_SESSION['login_user'] = $myusername;
-           header("location: index.php");  
+      $db = new Database;
+      $pdo = $db->Connect();
+      $username = $_POST['Username'];
+      $password = md5($_POST['Password']); 
+      $sql = "SELECT * FROM admin WHERE username = :username AND password = :password";
+      $stmt = $pdo->prepare($sql);
+      $stmt -> execute(['username'=>$username,'password'=>$password]);
+      $row = $stmt->fetch();
+      $userCount = $stmt->rowCount();
+
+    if($userCount  == 1) {
+      if($row->role == "administrator"){
+       $_SESSION['login_user'] = $username;
+       header("location: index.php");  
     } else {
-    $error = "Access Denied You Are Not Admin.";
+         $error = "Access Denied You Are Not Admin.";
    }
       }else {
          $error = "Username or Password is Incorrect.";

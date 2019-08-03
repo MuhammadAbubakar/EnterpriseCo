@@ -1,76 +1,13 @@
 <?php 
-require 'config.php';
+require '../functions/config.inc.php';
+include '../functions/users.php';
+include '../functions/passwords.php';
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-  $token = md5(uniqid(rand(), true));
-  if(isset($_POST['email']) && $_POST['email'] != ''){
-    $myemail = $_POST['email'];
-    if(check_email($myemail)){
-    
-   } else {
-    $emailErr = "error";
+    $username =isset($_POST['username']) ? $_POST['username']: '';
+    $resetPassword = new ResetPassword;
+   $msg = $resetPassword -> sendEmail($username);
   }
-}
-
-  if(isset($emailErr)) {
-    $messageerror = "Invalid email address";
-  } else {
-
-    $header = "From: noreply@thunderhost.xyz"; 
-    if (mail($myemail, "Rest Password Code", "",$header)) {
-        $messageerror = "One or more critical errors have occurred.";
-    } else {
-        $regquiry = "INSERT INTO ConfirmCode (username,code) VALUES ('$username','$token')";
-        $newcuser = mysqli_query($conn,$regquiry);
-        $messagesend = "Instructions has been send to your email";
-    }
-  } 
-}
-
-function check_email($email) {
-  $domain = substr($email, strpos($email, '@') + 1);
-  if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-  if (checkdnsrr($domain) != FALSE) {
-     switch(strtolower($domain)) {
-      case 'gmail.com':
-       return true;
-       break;
-
-      case 'hotmail.com':
-       return true;
-       break;
-
-      case 'outlook.com':
-       return true;
-       break;
-
-      case 'yahoo.com':
-       return true;
-       break;
-
-      case 'msn.com':
-       return true;
-       break;
-
-      case 'outlook.sa':
-       return true;
-       break;
-
-      case "aol.com":
-       return true;
-       break;
-
-      default:
-       return false;
-       break;
-     }
-  } else {
-    return false;
-   }
-  } else {
-    return false;
-   }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -101,26 +38,21 @@ function check_email($email) {
       <div class="card-body">
          <div class="text-center">
             <?php   
-              if(isset($messagesend)) {
-                echo '<div class="alert alert-success" role="alert"><b class="text-success">'.$messagesend."</b></div>";
-                
-                } elseif(isset($messageerror)) {
-                  echo '<div class="alert alert-danger" role="alert"><b class="text-danger">'.$messageerror."</b></div>";
-                } else {
-                  // Nothing
+              if(isset($msg)) {
+                echo '<div class="alert alert-primary" role="alert"><b class="text-primary">'.$msg."</b></div>";
                 }
               ?>
           </div>
         <div class="text-center mb-4">
 
           <h4>Forgot your password?</h4>
-          <p>Enter your email address and we will send you instructions on how to reset your password.</p>
+          <p>Enter your username and we will send you instructions on how to reset your password.</p>
         </div>
         <form method="POST" action="">
           <div class="form-group">
             <div class="form-label-group">
-              <input type="email" name="email" id="email" class="form-control" placeholder="Enter email address" required="required" autofocus="autofocus">
-              <label for="email">Email Address</label>
+              <input type="text" name="username" id="username" class="form-control" placeholder="Enter" required="required" autofocus="autofocus">
+              <label for="username">Username</label>
             </div>
           </div>
           <button class="btn btn-primary btn-block" type="submit">Reset Password</button>

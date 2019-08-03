@@ -1,28 +1,21 @@
 <?php 
-require 'config.php';
-session_start();
-  $key = $_GET['key'];
-  $userequest = "SELECT * FROM ConfirmCode WHERE code='$key' limit 1";
-  $result=mysqli_query($conn,$userequest);
-  $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
-  $username = $row['username'];
+require '../functions/config.inc.php';
+include '../functions/users.php';
+include '../functions/passwords.php';
 
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
-  $Password = md5($_POST['password']);
-  $confirmPassword = md5($_POST['confirmPassword']);
+  $key = $_GET['key'];
+  $updatePassword = new ResetPassword;
+  $data = $updatePassword->getUserAssignToToken($key);
+  if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    $Password = $_POST['password'];
+    $confirmPassword = $_POST['confirmPassword'];
   if ($Password == $confirmPassword) {
-  	if (strlen($_POST['password']) >= 8) {
-    $sql = "UPDATE admin SET password='$Password' WHERE username='$username'";
-    $newcuser = mysqli_query($conn,$sql);
-    $msg = "Password Has Been Updated";	
-  	} else {
-  		$errmsg = 'Please enter more then 8 characters';
-  	}
+    $msg  = $updatePassword -> updatePassword($data->username,$_POST['password']);
   } else {
-    $errmsg = "Password Confirm is incorrect";
+    $msg = "Password Confirm is incorrect";
   }
 }
-  session_destroy();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,12 +47,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
          <div class="text-center">
             <?php   
               if(isset($msg)) {
-                echo '<div class="alert alert-success" role="alert"><b class="text-success">'.$msg."</b></div>";
-                } elseif(isset($errmsg)) {
-                  echo '<div class="alert alert-danger" role="alert"><b class="text-danger">'.$errmsg."</b></div>";
-                } else {
-                  // Nothing
-                }
+                echo '<div class="alert alert-primary" role="alert"><b class="text-primary">'.$msg."</b></div>";
+              }
               ?>
           </div>
         <div class="text-center mb-4">

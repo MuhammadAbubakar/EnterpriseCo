@@ -1,33 +1,18 @@
 <?php 
-include 'config.php';
+require '../functions/config.inc.php';
+include '../functions/users.php';
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-if (isset($_POST['Username']) && isset($_POST['Password']) && isset($_POST['confirmPassword'])) {
-  $Username = $_POST['Username'];
-  $Password = md5($_POST['Password']);
-  $confirmPassword = md5($_POST['confirmPassword']);
-  if (checkExist($Username) == true) {
-  $errmsg = "Username Exist";
-} else {
-  if ($Password == $confirmPassword) {
-    $regquiry = "INSERT INTO admin (username,password,role) VALUES ('$Username','$Password','user')";
-    $newcuser = mysqli_query($conn,$regquiry);
-    $msg = "Account Has Been Created";
+  $Username = isset($_POST['Username']) ? $_POST['Username']: ''; 
+  $Password = isset($_POST['Password']) ? $_POST['Password']: ''; 
+  $confirmPassword = isset($_POST['confirmPassword']) ? $_POST['confirmPassword']: '';
+  $email = isset($_POST['Email']) ? $_POST['Email']: '';
+  $role = "user";
+  $db = new User;
+  if ($Password != $confirmPassword) {
+    $msg = "Password Confirm is incorrect";
   } else {
-    $errmsg = "Password Confirm is incorrect";
+    $msg = $db->newUser($Username,$Password,$email,$role);
   }
-}
-}
- 
-}
-
-function checkExist($CheckUser) {
-global $conn;
-$result = mysqli_query($conn,"SELECT * FROM admin WHERE username = '$CheckUser'");
-if(mysqli_num_rows($result) == 0) {
-     return false;
-} else {
-    return true;
-}
 }
 ?>
 <!DOCTYPE html>
@@ -79,14 +64,14 @@ if(mysqli_num_rows($result) == 0) {
           <div class="form-group">
             <div class="form-label-group">
               <input type="text" name="Username" id="Username" class="form-control" placeholder="Username" required="required">
-              <label for="inputEmail">Username</label>
+              <label for="Username">Username</label>
             </div>
           </div>
 
           <div class="form-group">
             <div class="form-label-group">
-              <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required">
-              <label for="inputEmail">Email address</label>
+              <input type="email" name="Email" id="Email" class="form-control" placeholder="Email address" required="required">
+              <label for="Email">Email address</label>
             </div>
           </div>
 
@@ -95,7 +80,7 @@ if(mysqli_num_rows($result) == 0) {
               <div class="col-md-6">
                 <div class="form-label-group">
                   <input type="password" name="Password" id="Password" class="form-control" placeholder="Password" required="required">
-                  <label for="inputPassword">Password</label>
+                  <label for="Password">Password</label>
                 </div>
               </div>
               <div class="col-md-6">
@@ -110,9 +95,6 @@ if(mysqli_num_rows($result) == 0) {
         <?php 
           if (isset($msg)){
             echo $msg;
-          } elseif (isset($errmsg)) {
-            echo $errmsg;
-          } else {
           }
           ?>
         </form>

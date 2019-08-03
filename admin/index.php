@@ -1,11 +1,11 @@
 <?php
-require 'config.php';
 include 'session.php';
-$retriveorders = "SELECT * FROM Orders";
-$printorders = mysqli_query($conn,$retriveorders);
-if ($login_session != $row['username']){
+include '../functions/orders.php';
+if ($login_session != $data->username){
     exit(header("Location: logout.php"));
   }
+  $index = new Order;
+  $orders = $index->getAllOrders(); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -100,16 +100,15 @@ if ($login_session != $row['username']){
                 </thead>
 
                 <tbody>
-
-                      <?php
-                        while($rows = mysqli_fetch_array($printorders, MYSQLI_ASSOC)){
-                        echo '<tr><td>'.$rows['id'].'</td>';
-                        echo '<td>'.$rows['FullName'].'</td>';
-                        echo '<td>'.$rows['Email'].'</td>';
-                        echo '<td>'.$rows['OrderNum'].'</td>';
-                        echo  '<td>'.$rows['Subject'].'</td>';
+                 <?php
+                  foreach ($orders as $order) {
+                      echo '<tr><td>'.$order -> id.'</td>';
+                        echo '<td>'.$order -> FullName.'</td>';
+                        echo '<td>'.$order -> Email.'</td>';
+                        echo '<td>'.$order -> OrderNum.'</td>';
+                        echo  '<td>'.$order -> Subject.'</td>';
                         echo '<td>';
-                          switch ($rows['Status']) {
+                          switch ($order -> Status) {
                            case "Open":
                              echo '<b style="color: green;">Open</b>';
                              break;
@@ -125,9 +124,9 @@ if ($login_session != $row['username']){
                             echo 'Error';
                              break;
                          }
-                         echo '</td>';
-                      echo '<td><a href="'."view.php?id=".$rows['id'].'">View</a></td>';
-                      echo '</tr>';   
+                          echo '</td>';
+                          echo '<td><a href="'."view.php?id=".$order -> id.'">View</a></td>';
+                          echo '</tr>';   
                       }
                       ?>
                 </tbody>

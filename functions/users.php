@@ -1,17 +1,12 @@
 <?php
-include 'config.inc.php';
-
 class User extends Database{
     public function getUserData($username){
-    	$username = $username;
-    	$pdo = $this->Connect();
+        $pdo = $this->Connect();
         $sql = "SELECT * FROM users WHERE username = ?";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$username]);
-        $data = $stmt->fetchAll();
-		foreach ($data as $username) {
-			return $username->password;
-		}
+        $data = $stmt->fetch();
+        return $data;
     }
 
     public function checkUser($username){
@@ -19,18 +14,22 @@ class User extends Database{
 		$sql = $pdo->prepare("SELECT * FROM users WHERE username = ?");
 		$sql -> execute([$username]);
 		if ($sql->rowCount()) {
-			echo 'User Exit';
+			return 'User Exit';
 		} else {
-			echo 'Premission Denied';
+			return 'Premission Denied';
 		}
     }
 
     public function newUser($username,$password,$email,$role){
-    	$pdo = $this->Connect();
-    	$sql = "INSERT INTO users(username,password,email,role) VALUES(:username,:password,:email,:role)";
-		$stmt = $pdo->prepare($sql);
-		$stmt->execute(['username'=>$username,'password'=>md5($password),"email"=>$email,"role"=>$role]);
-		return 'Username Created';
+        if ($this->checkUser($username) == "User Exit") {
+            return 'Username Exist';
+        } else {
+            $pdo = $this->Connect();
+            $sql = "INSERT INTO users(username,password,email,role) VALUES(:username,:password,:email,:role)";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute(['username'=>$username,'password'=>md5($password),"email"=>$email,"role"=>$role]);
+            return 'Account Has Been Created';   
+        }
     }
 
     public function deleteUser($id){
@@ -49,7 +48,4 @@ class User extends Database{
 		echo 'Username Updated';
     }
 }
-
-$object = new User;
-echo $object->updateUser("4","blackhacker");
 ?>
