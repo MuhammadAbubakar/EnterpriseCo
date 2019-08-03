@@ -62,6 +62,7 @@ v3.0
   - MailChimp Integration
   - Advanced Dashboard
   - Ajax Requests insted of normal HTML Submits
+  - Rewrite Project in OOP with PDO Connection
   
 ```
 
