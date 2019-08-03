@@ -5,7 +5,6 @@
    if($_SERVER["REQUEST_METHOD"] == "POST") {
      $username = $_POST['Username'];
      $password = $_POST['Password'];
-     $remember_me = $_POST['remember_me'];
      $login = new Login;
      $logme = $login->newLogin($username,$password);
      $row = $logme->fetch();
@@ -21,10 +20,13 @@
          $error = "Username or Password is Incorrect.";
       }
 
-      if ($remember_me == "yes") {
+      if (isset($_POST['remember_me'])) {
+        $remember_me = $_POST['remember_me'];
+        if ($remember_me == "yes") {
           $hour = time() + 3600 * 24 * 30;
           setcookie('Username', $login, $hour);
           setcookie('Password', $password, $hour);
+        } 
       }
    }
 ?>
@@ -55,6 +57,13 @@
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">Login</div>
       <div class="card-body">
+        <div class="text-center">
+            <?php   
+              if(isset($error)) {
+                echo '<div class="alert alert-danger" role="alert"><b class="text-danger">'.$error."</b></div>";
+              }
+              ?>
+      </div>
         <form method="POST">
           <div class="form-group">
             <div class="form-label-group">
@@ -79,11 +88,7 @@
           <button class="btn btn-primary btn-block" type="submit">Login</button>
           
             <div class="text-lef">
-            <?php
-            if (isset($error)) {
-              echo $error;
-            }
-            ?>
+
           </div>
         
         </form>

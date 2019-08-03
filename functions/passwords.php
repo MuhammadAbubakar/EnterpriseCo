@@ -13,12 +13,13 @@ class ResetPassword extends User {
 	    	if ($this->checkUser($username) != "User Exit") {
 	    		return "Username does not exist!";
 	    	} else {
+	    		$token = $this->generateToken();
 	    		$rows = $this->getUserData($username);
 	    		$email = $rows->email;
 				$sql = "INSERT INTO ConfirmCode (username,code) VALUES (:username,:token)";
 				$stmt = $pdo->prepare($sql);
-				$stmt->execute(['username'=>$username,'token'=>$this->generateToken()]);
-	    	    mail($email, "Rest Password Code", "",$header);
+				$stmt->execute(['username'=>$username,'token'=>$token]);
+	    	    mail($email, "Hello '$username', </br> Password Rest Token: '$token' </br> Good day to you", "",$header);
 	    		return "Instructions has been send to your email";
 	    }
  }
