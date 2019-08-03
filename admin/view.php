@@ -1,8 +1,10 @@
 <?php
 require 'config.php';
 include 'session.php';
+header('Content-Type:text/html; charset=UTF-8');
 $id = $_GET['id'];
 $retriveorders = "SELECT * FROM Orders WHERE id='$id'";
+mysqli_query($conn,"SET NAMES 'utf8'");
 $printorders = mysqli_query($conn,$retriveorders);
 $rows = mysqli_fetch_array($printorders, MYSQLI_ASSOC);
 if ($login_session != $row['username']){
@@ -45,12 +47,13 @@ mail($_POST['email'], $_POST['subject'], $_POST['comment'],$header);
   <head>
     <link rel="stylesheet" href="minified/themes/default.min.css" />
     <script src="minified/sceditor.min.js"></script>
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
     <title>EnterpriseCo - Review Order</title>
+
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
@@ -79,7 +82,7 @@ mail($_POST['email'], $_POST['subject'], $_POST['comment'],$header);
 
 <div class="card mx-auto" style="width: 50rem;">
   <div class="card-header"><?php echo "Ticket Number : #".$rows['OrderNum']."<br>"."Subject : ".$rows['Subject']; ?> </div>
-  <div class="card-body"><?php  echo $rows['Message']; ?></div>
+  <div class="card-body" charset="UTF-8"><?php  echo  $rows['Message']; ?></div>
   <div class="card-footer">
 <form>
 <div class="dropdown">
