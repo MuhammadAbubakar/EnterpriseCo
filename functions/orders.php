@@ -8,6 +8,13 @@ class Order extends Database
 		$stmt->execute(['name'=>$fullname,'email'=>$email,'token'=>$token,'subject'=>$subject,'message'=>$message,'status'=>$status]);
 	}
 
+	public function numOfOrders(){
+		$pdo = $this->Connect();
+		$sql = $pdo->prepare("SELECT * FROM Orders");
+		$sql -> execute();
+		return $sql->rowCount();
+	}
+	
 	public function getAllOrders(){
 		$pdo = $this->Connect();
 		$sql = "SELECT * FROM Orders";;

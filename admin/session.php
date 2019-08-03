@@ -1,13 +1,9 @@
 <?php
-   include('../functions/config.inc.php');
+  include '../functions/users.php';
    session_start();
-    $db = new Database;
-    $pdo = $db->Connect();
+    $user = new User;
     $user_check = $_SESSION['login_user'];
-    $sql = "SELECT username FROM admin WHERE username = :username";
-	  $stmt = $pdo->prepare($sql);
-	  $stmt->execute(['username' => $user_check]);
-	  $data = $stmt->fetch();
+    $data = $user->getUserData($user_check); 
 	  $login_session = $data->username;
    if(!isset($_SESSION['login_user'])){
       exit(header("Location: login.php"));

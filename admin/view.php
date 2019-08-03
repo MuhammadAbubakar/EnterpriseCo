@@ -1,8 +1,7 @@
 <?php
-require 'session.php';
 require '../functions/config.inc.php';
 include '../functions/orders.php';
-
+require 'session.php';
 $view = new Order;
 $rows = $view->getOrder($_GET['id']);
 

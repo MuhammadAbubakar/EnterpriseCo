@@ -20,6 +20,11 @@ class User extends Database{
 		}
     }
 
+    public function checkLogin($username,$password)
+    {
+        
+    }
+
     public function newUser($username,$password,$email,$role){
         if ($this->checkUser($username) == "User Exit") {
             return 'Username Exist';

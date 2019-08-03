@@ -1,17 +1,15 @@
 <?php
   include '../functions/config.inc.php';
+  include '../functions/login.php';
    session_start();
    if($_SERVER["REQUEST_METHOD"] == "POST") {
-      $db = new Database;
-      $pdo = $db->Connect();
-      $username = $_POST['Username'];
-      $password = md5($_POST['Password']); 
-      $sql = "SELECT * FROM admin WHERE username = :username AND password = :password";
-      $stmt = $pdo->prepare($sql);
-      $stmt -> execute(['username'=>$username,'password'=>$password]);
-      $row = $stmt->fetch();
-      $userCount = $stmt->rowCount();
-
+     $username = $_POST['Username'];
+     $password = $_POST['Password'];
+     $remember_me = $_POST['remember_me'];
+     $login = new Login;
+     $logme = $login->newLogin($username,$password);
+     $row = $logme->fetch();
+     $userCount = $logme->rowCount();
     if($userCount  == 1) {
       if($row->role == "administrator"){
        $_SESSION['login_user'] = $username;
@@ -19,8 +17,14 @@
     } else {
          $error = "Access Denied You Are Not Admin.";
    }
-      }else {
+      } else {
          $error = "Username or Password is Incorrect.";
+      }
+
+      if ($remember_me == "yes") {
+          $hour = time() + 3600 * 24 * 30;
+          setcookie('Username', $login, $hour);
+          setcookie('Password', $password, $hour);
       }
    }
 ?>
@@ -67,7 +71,7 @@
           <div class="form-group">
             <div class="checkbox">
               <label>
-                <input type="checkbox" value="remember-me">
+                <input type="checkbox" id="remember_me"  name="remember_me"  value="yes">
                 Remember Password
               </label>
             </div>
