@@ -13,3 +13,19 @@
    <script type="text/javascript" src="src/js/scrool-smooth.js"></script>
    <script type="text/javascript" src="src/js/imgload.js"></script>
    <script type="text/javascript" src="src/js/cookies.js"></script>
+   <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+   <!--
+
+   	[ Animation Support ] 
+   <link rel="stylesheet" type="text/css" href="src/css/animate.css">
+   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+-->
+
+   <style type="text/css">
+     .pt5{
+      padding-top: 100px;
+      padding-bottom: 70px;
+     }
+   </style>

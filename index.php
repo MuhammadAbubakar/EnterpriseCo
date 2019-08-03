@@ -55,7 +55,7 @@
 <br><br>
 
 <section class="container">
-    <p class="p">إذا تبغا تستعين بخدامتنا الرجاء الاتصال بنا</p>
+    <p class="p">إذا تبغا تستعين بخدماتنا الرجاء الاتصال بنا</p>
 </section>
   <p class="lead">
     <a class="btn btn-primary btn-lg" href="contact.php" role="button">طلب خدمة</a>
@@ -64,7 +64,7 @@
  </div>
 
 <!-- Our Services -->
-  <div class="container pt-3 pb-3 containers-service" id="services">
+  <div class="container pt-3 pb-3 containers-service" data-aos="fade-up" data-aos-duration="3000" id="services">
    <div class="row ">
     <div class="col-md-12 text-center">
      <h1 class="display-4">خدماتنا</h1>
@@ -104,7 +104,8 @@
  
 
 <!-- Pricing Table -->
-<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center" id="pricing">
+<div data-aos="zoom-in" class="pt5" data-aos-duration="2000"> 
+<div class="pricing-header pt5 px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center" id="pricing">
   <h1 class="display-4">اسعارنا</h1>
   <p class="lead">جدول اسعار احترافي لعرض اسعارك للعملاء
   </p>
@@ -175,12 +176,14 @@
     </div>
 </div>
 
-<!-- Our Team Table -->
-<div class="text-center px-3 py-3 pt-md-5 pb-md-4 mx-auto"  id="team">
- <h1 class="display-4">فريقنا</h1>
-<p>اعضاء فريقنا الاحترافي</p>
 </div>
-<div class="container">
+
+<!-- Our Team Table -->
+<div class="container" style="padding-bottom: 100px" data-aos="zoom-in-left" data-aos-duration="3000">
+    <div class="text-center px-3 py-3 pt-md-5 pb-md-4 mx-auto"  id="team">
+      <h1 class="display-4">فريقنا</h1>
+      <p>اعضاء فريقنا الاحترافي</p>
+    </div>
     <div class="row text-center">
 
         <!-- Team item -->
@@ -244,7 +247,9 @@
 
 
 <!-- Testimonials -->
-<div class="container px-3 py-3 pt-md-5 pb-md-4 mx-auto">
+
+<div data-aos="fade-up-left" data-aos-duration="2500">
+  <div class="container px-3 py-3 pt-md-5 pb-md-4 mx-auto">
  <div class="text-center">
   <h1 class="display-4">شهادات العملاء</h1>
   <p>ماذا يقولون العملاء عنا ؟</p>
@@ -315,10 +320,13 @@
   </div>
  </div>
 </div>
+</div>
+
+
 
 
 <!-- Our Clients Combonent -->
-  <div class="container containers-clients px-3 py-3 pt-md-5 pb-md-4 mx-auto">
+  <div class="container containers-clients px-3 py-3 pt-md-5 pb-md-4 mx-auto" data-aos="flip-left" data-aos-duration="2000">
    <div class="row">
     <div class="col-md-12">
      <div class="text-center">
@@ -342,14 +350,14 @@
   </div>
 
 <!-- Newsletter Form -->
- <section class="newsletter text-white px-3 py-3 pt-md-5 pb-md-5 mx-auto bg-primary">
+<section  class="newsletter text-white px-3 py-3 pt-md-5 pb-md-5 mx-auto bg-primary">
 <div class="container">
 <div class="row">
 <div class="col-sm-12">
  <div class="content">
   <h2 class="text-white">اشترك معنا في نشرتنا الاخباريه</h2>
   <form method="POST" action="#">
-  <div class="input-group">
+  <div class="input-group" data-aos="zoom-out">
    <input type="email" class="form-control" placeholder="أدخل بريدك الالكتروني">
          <span class="input-group-btn">
          <button class="btn btn-primary" type="submit">أشترك الان</button>
@@ -363,15 +371,17 @@
 </section>
 
 <!-- Footer -->
-<div class="container text-center pt-5">
-    <ul class="list-inline h4">
-      <li class="list-inline-item circle"><a href="#"><i class="onhover fa fa-twitter fa-stack circle-twitter"></i></a></li>
-      <li class="list-inline-item circle"><a href="#"><i class="onhover fa fa-facebook fa-stack circle-facebook"></i></a></li>
-      <li class="list-inline-item circle"><a href="#"><i class="onhover fa fa-linkedin fa-stack circle-linkedin"></i></a></li>
-      <li class="list-inline-item circle"><a href="#"><i class="onhover fa fa-instagram fa-stack circle-instagram"></i></a></li>
-      <li class="list-inline-item circle"><a href="#"><i class="onhover fa fa-snapchat-ghost fa-stack circle-snapchat"></i></a></li>
-      <li></li>
-    </ul>
+<div data-aos="slide-up">
+  <div class="container text-center pt-5">
+      <ul class="list-inline h4">
+        <li class="list-inline-item circle"><a href="#"><i class="onhover fa fa-twitter fa-stack circle-twitter"></i></a></li>
+        <li class="list-inline-item circle"><a href="#"><i class="onhover fa fa-facebook fa-stack circle-facebook"></i></a></li>
+        <li class="list-inline-item circle"><a href="#"><i class="onhover fa fa-linkedin fa-stack circle-linkedin"></i></a></li>
+        <li class="list-inline-item circle"><a href="#"><i class="onhover fa fa-instagram fa-stack circle-instagram"></i></a></li>
+        <li class="list-inline-item circle"><a href="#"><i class="onhover fa fa-snapchat-ghost fa-stack circle-snapchat"></i></a></li>
+        <li></li>
+      </ul>
+  </div>  
 </div>
 
 
@@ -463,5 +473,24 @@
                   $('nav').removeClass('bg-primary');
             }
       })
+
+
+  AOS.init({
+  // Global settings:
+  disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
+  startEvent: 'DOMContentLoaded', // name of the event dispatched on the document, that AOS should initialize on
+  initClassName: 'aos-init', // class applied after initialization
+  animatedClassName: 'aos-animate', // class applied on animation
+  useClassNames: false, // if true, will add content of `data-aos` as classes on scroll
+  disableMutationObserver: false, // disables automatic mutations' detections (advanced)
+  debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
+  throttleDelay: 99,
+  delay: 50,
+  duration:2000, // the delay on throttle used while scrolling the page (advanced)
+  easing: 'ease', // default easing for AOS animations
+  once: true, // whether animation should happen only once - while scrolling down
+  mirror: false, // whether elements should animate out while scrolling past them
+  anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
+});
  </script>
 </html>
