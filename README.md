@@ -1,6 +1,6 @@
 # EnterpriseCo
 
-![GitHub](https://img.shields.io/github/license/blackhacker511/EnterpriseCo)
+![GitHub](https://img.shields.io/github/license/blackhacker511/EnterpriseCo) ![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/blackhacker511/EnterpriseCo) ![GitHub commits since tagged version](https://img.shields.io/github/commits-since/blackhacker511/EnterpriseCo/v2.0) ![Badge](https://img.shields.io/badge/status-beta-blue) ![xs](https://img.shields.io/github/languages/top/blackhacker511/EnterpriseCo?color=pink)
 
 a Simple Business Website Software bulit with Bootstrap and PHP
 
