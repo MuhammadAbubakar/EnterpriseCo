@@ -1,4 +1,7 @@
 # EnterpriseCo
+
+![GitHub](https://img.shields.io/github/license/blackhacker511/EnterpriseCo)
+
 a Simple Business Website Software bulit with Bootstrap and PHP
 
 نظام مواقع مبني للشركات مصمم بال اتش تي ام ال و البوت ستراب 
