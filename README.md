@@ -1,7 +1,7 @@
 # EnterpriseCo
 
-![GitHub](https://img.shields.io/github/license/blackhacker511/EnterpriseCo) ![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/blackhacker511/EnterpriseCo) ![GitHub commits since tagged version](https://img.shields.io/github/commits-since/blackhacker511/EnterpriseCo/v2.0) ![Badge](https://img.shields.io/badge/status-beta-blue) ![xs](https://img.shields.io/github/languages/top/blackhacker511/EnterpriseCo?color=pink) ![GitHub All Releases](https://img.shields.io/github/downloads/blackhacker511/enterpriseco/total)
-
+![GitHub](https://img.shields.io/github/license/blackhacker511/EnterpriseCo) ![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/blackhacker511/EnterpriseCo) ![GitHub commits since tagged version](https://img.shields.io/github/commits-since/blackhacker511/EnterpriseCo/v2.0) ![Badge](https://img.shields.io/badge/status-beta-blue) ![xs](https://img.shields.io/github/languages/top/blackhacker511/EnterpriseCo?color=pink) ![GitHub All Releases](https://img.shields.io/github/downloads/blackhacker511/enterpriseco/total) ![GitHub repo size](https://img.shields.io/github/repo-size/blackhacker511/enterpriseco?color=%239b59b6)
+ 
 a Simple Business Website Software bulit with Bootstrap and PHP
 
 نظام مواقع مبني للشركات مصمم بال اتش تي ام ال و البوت ستراب 
