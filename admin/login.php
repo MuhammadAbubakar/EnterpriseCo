@@ -47,7 +47,7 @@
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin.css" rel="stylesheet">
+  <link href="src/css/sb-admin.css" rel="stylesheet">
 
 </head>
 

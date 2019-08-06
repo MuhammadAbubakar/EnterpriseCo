@@ -8,7 +8,26 @@ class User extends Database{
         $data = $stmt->fetch();
         return $data;
     }
+    
+    public function numUsers(){
+        $pdo = $this->Connect();
+        $sql = "SELECT COUNT(*) FROM users";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $data = $stmt->fetchColumn();
+        return $data;
+    }
 
+   public function randomPassword() {
+    $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!+@#$%^&*/';
+    $pass = array(); //remember to declare $pass as an array
+    $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+    for ($i = 0; $i < 8; $i++) {
+        $n = rand(0, $alphaLength);
+        $pass[] = $alphabet[$n];
+    }
+    return implode($pass); //turn the array into a string
+ }
     public function checkUser($username){
     	$pdo = $this->Connect();
 		$sql = $pdo->prepare("SELECT * FROM users WHERE username = ?");
@@ -42,7 +61,7 @@ class User extends Database{
 
     public function updateUser($id,$username){
     	$pdo = $this->Connect();
-    	$sql = "UPDATE users SET username = :username WHERE id = :id";
+    	$sql = "UPDATE users SET username = :username WHERE id IN :id";
 		$stmt = $pdo->prepare($sql);
 		$stmt->execute(['username'=>$username,'id'=>$id]);
 		echo 'Username Updated';

@@ -1,62 +1,24 @@
 <?php
-include 'admin/config.php';
+include 'functions/config.inc.php';
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-$table = "Orders";
-if(mysqli_num_rows(mysqli_query($conn,"SHOW TABLES LIKE '".$table."'")) == 1)  {
-
-
-} else {
-
-$CreateOrders = "CREATE TABLE Orders (id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-FullName MEDIUMTEXT NOT NULL,
-Email LONGTEXT NOT NULL,
-OrderNum LONGTEXT NOT NULL,
-Subject LONGTEXT NOT NULL,
-Message LONGTEXT NOT NULL,
-Status LONGTEXT NOT NULL)";
-$quriy = mysqli_query($conn, $CreateOrders);
-
+$query = '';
+$sqlScript = file('EnterpriseCo.sql');
+$datbase = new Database;
+$pdo = $datbase->Connect();
+foreach ($sqlScript as $line){
+	$startWith = substr(trim($line), 0 ,2);
+	$endWith = substr(trim($line), -1 ,1);	
+	if (empty($line) || $startWith == '--' || $startWith == '/*' || $startWith == '//') {
+		continue;
+	}	
+	$query = $query . $line;
+	if ($endWith == ';') {
+		$stmt = $pdo->query($query) or die('Problem in executing the SQL query <b>' . $query. '</b></div>');
+		$query= '';
+	}
 }
-
-$table2 = "admin";
-if(mysqli_num_rows(mysqli_query($conn,"SHOW TABLES LIKE '".$table2."'")) == 1)  {
-
-
-} else {
-
-$CreateAdmin = "CREATE TABLE admin (id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-username MEDIUMTEXT NOT NULL,
-password LONGTEXT NOT NULL,
-role LONGTEXT NOT NULL)";
-
-$quriy2 = mysqli_query($conn, $CreateAdmin);
-
-$username = "admin";
-$password = md5("admin");
-$role = 'administrator';
-$RegesterUser = "INSERT INTO admin (username,password,role) VALUES ('$username','$password','$role')";
-
-$quriy3 = mysqli_query($conn, $RegesterUser);
-
+$msg = 'SQL file imported successfully';
 }
-
-
-$table3 = "ConfirmCode";
-if(mysqli_num_rows(mysqli_query($conn,"SHOW TABLES LIKE '".$table3."'")) == 1)  {
-
-
-} else {
-
-$CreateCode = "CREATE TABLE ConfirmCode (id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-username MEDIUMTEXT NOT NULL,
-code LONGTEXT NOT NULL)";
-
-$quriy4 = mysqli_query($conn, $CreateCode);
-
-}
-
-}
-mysqli_close($conn);
 ?> 
 
 <!DOCTYPE html>
@@ -92,26 +54,30 @@ mysqli_close($conn);
 	<div class="container d-flex justify-content-center align-items-center">
 		<div class="row justify-content-center align-middle">
 			<div class="col pt">
-			   <form method="POST">
-			   <button class="btn btn-dark btn-lg btn-block"><h1>Install</h1></button>			   	
-			   </form>
 			   <div class="container">
 			   		<div class="row">
 			   			<div class="col">
 						<?php 
 						  if ($_SERVER['REQUEST_METHOD'] == "POST") {
-						echo "<ul>
-			   					<li><b>Create Orders Table [ id,FullName,Email,OrderNum,Subject,Message,Status ]</b></li>
-			   					<li><b>Create admin Table [ id,username,password,role ]</b></li>
- 								<li><b>Regester Dafualt User  [ 1,admin,admin,administrator]</b></li>
- 								<li><b>Now You Can Access The Botnet HomePage and Regester a new Account</b></li>
-			   				</ul>";
+						  	echo '<div class="alert alert-success">'.$msg.'</div>';
 						  }
-
 						  ?>
 			   			</div>
 			   		</div>
 			   </div>
+			   <form method="POST">
+			   <div class="alert alert-light text-center border-danger">
+			   	<p class="lead"><b>this page going to install EnterpriseCo </br> default settings <br> 
+			   		admin login details
+			   		<ul class="list-unstyled">
+			   			<li class="">Username: admin</li>
+			   			<li class="">Password: admin</li>
+			   		</ul>
+			   	</b></p>
+			   </div>
+			   <button class="btn btn-dark btn-lg btn-block"><h1>Install Our Database</h1></button>	
+		   	
+			   </form>
 			</div>
 		</div>
 	</div>

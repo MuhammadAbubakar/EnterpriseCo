@@ -1,13 +1,15 @@
 <?php
 require '../functions/config.inc.php';
 include '../functions/orders.php';
+include '../functions/posts.php';
 include 'session.php';
 
 if ($login_session != $data->username){
     exit(header("Location: logout.php"));
   }
   $index = new Order;
-  $orders = $index->getAllOrders(); 
+  $post = new Posts;
+  $orders = $index->getAllOrders();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +31,7 @@ if ($login_session != $data->username){
   <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin.css" rel="stylesheet">
+  <link href="src/css/sb-admin.css" rel="stylesheet">
 
 </head>
 
@@ -62,7 +64,7 @@ if ($login_session != $data->username){
                 <div class="card-body-icon">
                   <i class="fas fa-fw fa-comments"></i>
                 </div>
-                <div class="mr-5">26 New Messages!</div>
+                <div class="mr-5"><? echo $post->numRows(); ?> New Posts!</div>
               </div>
               <a class="card-footer text-white clearfix small z-1" href="#">
                 <span class="float-left">View Details</span>
@@ -76,9 +78,9 @@ if ($login_session != $data->username){
             <div class="card text-white bg-warning o-hidden h-100">
               <div class="card-body">
                 <div class="card-body-icon">
-                  <i class="fas fa-fw fa-list"></i>
+                  <i class="fas fa-fw fa-user"></i>
                 </div>
-                <div class="mr-5">11 New Tasks!</div>
+                <div class="mr-5"><?php echo $user->numUsers(); ?> Users!</div>
               </div>
               <a class="card-footer text-white clearfix small z-1" href="#">
                 <span class="float-left">View Details</span>

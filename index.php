@@ -1,7 +1,16 @@
+<?php
+include 'functions/config.inc.php';
+include 'functions/settings.php';
+
+$settings = new Settings;
+$mysettings = $settings->getSettings();
+
+?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-   <title>EnterpriseCo - Home</title>
+   <title><?php echo $mysettings->Title; ?> - Home</title>
+   <meta name="description" content="<?php echo $mysettings->Description; ?>">
    <?php include "tags.php" ?>
 </head>
 
@@ -9,7 +18,7 @@
  <div class="banner">
   <nav class="navbar navbar-expand-md navbar-dark bg-transparent hidden-lg-up fixed-top">
     <div class="container">
-    <a class="navbar-brand" href="#">EnterpriseCo</a>
+    <a class="navbar-brand" href="#"><?php echo $mysettings->Title; ?></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
