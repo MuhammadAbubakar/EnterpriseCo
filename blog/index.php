@@ -1,10 +1,17 @@
 <?php
 include '../functions/config.inc.php';
  include '../functions/posts.php';
+if(isset($_GET['page'])){
+	$page=$_GET['page'];
+} else {
+	$page=1;
+}
+ $per_page = 5;
  $posts = new Posts;
- $execute = $posts->getAllPosts();
- $data = $execute->fetchAll();
-  ?>
+ $data = $posts->getAllPosts($page,$per_page);
+ $rowCount = $posts->numRows();
+ $total_pages = ceil($rowCount/$per_page);
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,9 +71,10 @@ include '../functions/config.inc.php';
         <h1 class="my-4"></h1>
 
          <?php
-          $rowCount = $execute->rowCount();
           if ($rowCount == 0) {
-             echo '<h2>No Posts!!</h2>';
+             echo '<div class="alert alert-light border-dark">
+             <h2 class="text-muted">No Posts!!</h2>
+             </div>';
               } else {
             foreach ($data as $post) {
                 $summary = $post->Post;
@@ -86,17 +94,21 @@ include '../functions/config.inc.php';
                   <a href="#">'.$post->Author.'</a>
                 </div>
               </div>
-        <ul class="pagination justify-content-center mb-4">
-          <li class="page-item">
-            <a class="page-link" href="#">&larr; Older</a>
-          </li>
-          <li class="page-item disabled">
-            <a class="page-link" href="#">Newer &rarr;</a>
-          </li>
-        </ul>
-
               ';  
                 }
+
+               echo '<ul class="pagination justify-content-center mb-4">';
+                if (isset($page) && $page != $total_pages) {
+                   	echo'<li class="page-item">
+           					  <a class="page-link" href="index.php?page='.($page+1).'"">&larr; Older</a>
+         					 </li>';	
+                } 
+                if ($page != 1) {
+                      echo'<li class="page-item">
+            				<a class="page-link" href="index.php?page='.($page-1).'">Newer &rarr;</a>
+          					</li>';
+                }
+                echo '</ul>';
               }
            ?>
 

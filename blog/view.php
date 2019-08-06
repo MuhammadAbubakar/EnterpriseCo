@@ -2,9 +2,18 @@
 $id = $_GET['id'];
 include '../functions/config.inc.php';
 include '../functions/posts.php';
+include '../functions/comments.php';
 
 $post = new Posts;
 $data = $post->getPost($id);
+$username = 'admin';
+
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+  $newComment = new Comments;
+  $mycomment = "<p>".$_POST['comment']."</p>";
+  $mycomment = str_replace("\n","<br />",$mycomment);
+  $msg = $newComment->newComment($username,$mycomment,$id);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -94,16 +103,39 @@ $data = $post->getPost($id);
         <div class="card my-4">
           <h5 class="card-header">Leave a Comment:</h5>
           <div class="card-body">
-            <form>
+            <form method="POST">
+              
+                <?php if(isset($msg)){
+                  echo '<div class="alert alert-success text-light font-weight-bold">';
+                  echo  $msg;
+                  echo '</div>';
+                }
+              ?>
+             
               <div class="form-group">
-                <textarea class="form-control" rows="3"></textarea>
+                <textarea name="comment" id="comment" class="form-control" rows="3"></textarea>
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
+              
             </form>
           </div>
         </div>
 
         <!-- Single Comment -->
+        <?php
+        $comments = new Comments;
+        $data = $comments -> getComments($id);
+        foreach ($data as $comment) {
+          echo '<div class="media mb-4">
+            <img class="d-flex mr-3 rounded-circle" height="50px" width="50px" src="'.$comments->getUserAvatar($comment->username).'" alt="">
+            <div class="media-body">
+            <h5 class="mt-0">'.$comment->username.'</h5>'
+            .$comment->Comment.
+            '</div>'
+          .'</div>';
+        }
+        ?>
+
 
       </div>
 
