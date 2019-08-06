@@ -2,7 +2,7 @@
  include 'users.php';
  class Comments extends User
  {
- 	public function getComments($id){
+ 	public function getComment($id){
  		$pdo = $this->Connect();
  		$sql = "SELECT * FROM Comments WHERE PostID = ?";
 		$stmt = $pdo->prepare($sql);
@@ -23,7 +23,7 @@
  		$pdo = $this->Connect();
  	}
 
- 	public function getComment($id){
+ 	public function getComments(){ // For Admin Dashboard
  		$pdo = $this->Connect();
  	}
 
