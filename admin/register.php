@@ -2,16 +2,19 @@
 require '../functions/config.inc.php';
 include '../functions/users.php';
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
+  $fname = isset($_POST['firstName']) ? $_POST['firstName']: ''; 
+  $lname = isset($_POST['lastName']) ? $_POST['lastName']: ''; 
   $Username = isset($_POST['Username']) ? $_POST['Username']: ''; 
   $Password = isset($_POST['Password']) ? $_POST['Password']: ''; 
   $confirmPassword = isset($_POST['confirmPassword']) ? $_POST['confirmPassword']: '';
   $email = isset($_POST['Email']) ? $_POST['Email']: '';
   $role = "user";
+
   $db = new User;
   if ($Password != $confirmPassword) {
     $msg = "Password Confirm is incorrect";
   } else {
-    $msg = $db->newUser($Username,$Password,$email,$role);
+    $msg = $db->newUser($fname,$lname,$Username,$Password,$email,$role,"../src/img/blank.png");
   }
 }
 ?>
