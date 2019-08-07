@@ -4,12 +4,12 @@ include 'functions/settings.php';
 
 $settings = new Settings;
 $mysettings = $settings->getSettings();
-
+$services  = $settings->getServices();
 ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-   <title><?php echo $mysettings->Title; ?> - Home</title>
+   <title><?php echo $mysettings->Title; ?> - Home 2</title>
    <meta name="description" content="<?php echo $mysettings->Description; ?>">
    <?php include "tags.php" ?>
 </head>
@@ -365,9 +365,13 @@ $mysettings = $settings->getSettings();
 <div class="col-sm-12">
  <div class="content">
   <h2 class="text-white">اشترك معنا في نشرتنا الاخباريه</h2>
-  <form method="POST" action="#">
+  <form action="<?php echo $services->Mailchimp; ?>" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate >
+  <div id="mce-responses" class="clear">
+    <div class="response" id="mce-error-response" style="display:none"></div>
+    <div class="response" id="mce-success-response" style="display:none"></div>
+  </div> 
   <div class="input-group" data-aos="zoom-out">
-   <input type="email" class="form-control" placeholder="أدخل بريدك الالكتروني">
+   <input type="email" class="form-control" name="EMAIL" id="mce-EMAIL" placeholder="أدخل بريدك الالكتروني">
          <span class="input-group-btn">
          <button class="btn btn-primary" type="submit">أشترك الان</button>
          </span>
@@ -399,7 +403,7 @@ $mysettings = $settings->getSettings();
     <div class="row">
       <div class="col-12 col-md">
         <img class="mb-2" src="src/img/beard.svg" alt="" width="30" height="30" class="img-fluid">
-        <small class="d-block mb-3 text-muted">&copy; 2017-2019 - صنع بكل <span style="color: #e74c3c;" class="fa fa-heart"></span> من قبل سنيك ديزاين</small>
+        <small class="d-block mb-3 text-muted">© 2017-2019 - صنع بكل <span style="color: #e74c3c;" class="fa fa-heart"></span> من قبل سنيك ديزاين</small>
     <ul class="list-inline">
       <li class="list-inline-item payment">
 		  <i class="fa fa-cc-paypal"></i>

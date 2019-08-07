@@ -158,7 +158,7 @@ require 'send.php';
                       echo ">".$message.'</textarea>';
                     } 
                   }
-                  ?> 
+                  ?>
     </div>
 
   <div class="form-group">

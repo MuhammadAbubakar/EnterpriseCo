@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   $comment = new Comments;
   if ($_SERVER['REQUEST_METHOD'] == "POST") {
    $msg = $comment->editComment($id,$_POST['username'],$_POST['Comment'],$_POST['PostID']);
-   exit(header("Location: ../editcoms.php?id=$id&msg=yes"));
+   exit(header("Location: ../CommentEditor.php?id=$id&msg=yes"));
   }
 }
 ?>

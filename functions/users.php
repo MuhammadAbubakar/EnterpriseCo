@@ -8,6 +8,15 @@ class User extends Database{
         $data = $stmt->fetch();
         return $data;
     }
+
+    public function getAllUsers(){
+        $pdo = $this->Connect();
+        $sql = "SELECT * FROM users";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $data = $stmt->fetchAll();
+        return $data;
+    }
     
     public function numUsers(){
         $pdo = $this->Connect();
@@ -53,18 +62,53 @@ class User extends Database{
 
     public function deleteUser($id){
     	$pdo = $this->Connect();
-    	$sql = "DELETE FROM users WHERE id = ?";
+    	$sql = "DELETE FROM users WHERE id IN ($id)";
 		$stmt = $pdo->prepare($sql);
-		$stmt->execute([$id]);
+		$stmt->execute();
 		return 'Username Removed';
     }
 
-    public function updateUser($id,$username){
+    public function updateUser($id,$username,$password,$email,$role,$avatar){
     	$pdo = $this->Connect();
-    	$sql = "UPDATE users SET username = :username WHERE id IN :id";
+        $user = $this->getUserData($username);
+        if ($user->username == $username) {
+                $newUser = $user->username;
+            } else {
+                $newUser = $username;
+            }
+
+            if ($user->password == md5($password)) {
+                $newPassword = $user->password;
+            } else {
+                $newPassword = md5($password);
+            }
+
+            if ($user->email == $email) {
+                $newEmail = $user->email;
+            } else {
+                $newEmail = $email;
+            }
+
+            if ($user->role == $role) {
+                $newRole = $user->role;
+            } else {
+                $newRole = $role;
+            }
+            if ($user->avatar == $avatar) {
+                $newAvatar = $user->avatar;
+            } else {
+                $newAvatar = $avatar;
+            }
+
+    	$sql = "UPDATE users SET username = :username,
+        password = :password,
+        email=:email,
+        role=:role,
+        avatar=:avatar WHERE id = :id";
+
 		$stmt = $pdo->prepare($sql);
-		$stmt->execute(['username'=>$username,'id'=>$id]);
-		echo 'Username Updated';
+		$stmt->execute(['username'=>$newUser,'password'=>$newPassword,'email'=>$newEmail,'role'=>$newRole,'avatar'=>$newAvatar,'id'=>$id]);
+		return 'Username Updated';
     }
 }
 ?>

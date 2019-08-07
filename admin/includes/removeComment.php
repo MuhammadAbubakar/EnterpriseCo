@@ -8,7 +8,7 @@ $comment = new Comments;
         $GetDelete = $_POST['delete'];
         $GetDeleteTidy = GetFilter(implode(',', $GetDelete));
         $comment->deleteComment($GetDeleteTidy);
-        exit(header("Location: ../editComments.php?msg=yes"));
+        exit(header("Location: ../viewComments.php?msg=yes"));
   }
 }
 

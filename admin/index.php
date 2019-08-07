@@ -127,26 +127,18 @@ if ($login_session != $data->username){
 
         <!-- Area Chart Example-->
 
-        <div class="card mb-3">
-          <div class="card-header">
-            <i class="fas fa-chart-area"></i>
-            Area Chart Example</div>
-          <div class="card-body">
-            <canvas id="myAreaChart" width="100%" height="30"></canvas>
-          </div>
-          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-        </div>
-
+<form method='POST' action="includes/removeOrders.php">
         <!-- DataTables Example -->
         <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-table"></i>
-            Support Tickets</div>
+            Custmors Orders</div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
+                    <th>#</th>
                     <th>ID</th>
                     <th>Full Name</th>
                     <th>Email</th>
@@ -160,7 +152,9 @@ if ($login_session != $data->username){
                 <tbody>
                  <?php
                   foreach ($orders as $order) {
-                      echo '<tr><td>'.$order -> id.'</td>';
+                    echo "<tr>";
+                    echo '<td><input type="checkbox" name="delete[]" value="'.$order->id.'"></td>';
+                      echo '<td>'.$order -> id.'</td>';
                         echo '<td>'.$order -> FullName.'</td>';
                         echo '<td>'.$order -> Email.'</td>';
                         echo '<td>'.$order -> OrderNum.'</td>';
@@ -191,9 +185,26 @@ if ($login_session != $data->username){
               </table>
             </div>
           </div>
-          <div class="card-footer small text-muted"> </div>
+          <div class="card-footer small text-muted">
+            <?php 
+            if (isset($_GET['msg'])) {
+              echo '<div class="alert alert-success">Orders has been removed</div>';
+            }
+             ?>
+      <?php echo "
+        <div class='form-inline'>
+          <div class='form-group mb-2'>
+            <select id='settings' name='settings' class='form-control'>
+              <option>Bulk Actions</option>
+              <option value='Delete'>Delete</option>
+            </select>
         </div>
-
+        <button type='submit' class='btn btn-primary mb-2'>Submit</button>
+        </div>
+          " ?>
+          </div>
+        </div>
+      </form>
       </div>
       <!-- /.container-fluid -->
 

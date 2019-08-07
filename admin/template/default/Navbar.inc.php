@@ -1,6 +1,6 @@
  <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="index.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span>
@@ -25,7 +25,6 @@
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <a class="dropdown-item" href="newUser.php">Create User</a>
           <a class="dropdown-item" href="viewUsers.php">Manage Users</a>
-          <a class="dropdown-item" href="userBlacklist.php">User Blacklist</a>
         </div>
       </li>
 

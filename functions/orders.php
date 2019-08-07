@@ -33,6 +33,13 @@ class Order extends Database
 		return $data;
 	}
 
+	public function deleteOrder($id){
+		$pdo = $this->Connect();
+		$sql = "DELETE FROM Orders WHERE id IN ($id)";
+		$stmt = $pdo->prepare($sql);
+		$stmt->execute();
+		return "Done";
+	}
 
 	public function sendEmail($email,$subject,$body){
 		$header = "From: noreply@example.com\r\n"; 

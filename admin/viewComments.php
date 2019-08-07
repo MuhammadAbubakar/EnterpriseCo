@@ -87,11 +87,11 @@ if ($login_session != $data->username){
                   foreach ($getComments as $comments) {
                     echo "<tr>";
                     echo '<td><input type="checkbox" name="delete[]" value="'.$comments->id.'"></td>';
-                      echo '<td>'.$comments -> id.'</td>';
-                        echo '<td>'.$comments -> username.'</td>';
-                        echo '<td>'.$comments -> Comment.'</td>';
-                        echo '<td>'.$comments -> PostID.'</td>';
-                        echo '<td><a href="editComment.php?id='.$comments->id.'">Edit</a></td>';
+                      echo '<td class="font-weight-bold">'.$comments -> id.'</td>';
+                        echo '<td class="font-weight-bold">'.$comments -> username.'</td>';
+                        echo '<td class="font-weight-bold">'.$comments -> Comment.'</td>';
+                        echo '<td class="font-weight-bold">'.$comments -> PostID.'</td>';
+                        echo '<td><a class="btn btn-primary text-white btn-block" href="CommentEditor.php?id='.$comments->id.'">Edit</a></td>';
                         echo '</tr>';
                       }
 
