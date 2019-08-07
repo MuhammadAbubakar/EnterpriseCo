@@ -1,6 +1,10 @@
 <?php
 include '../functions/config.inc.php';
  include '../functions/posts.php';
+ include 'session.php';
+ if ($login_session != $data->username){
+    exit(header("Location: logout.php"));
+  }
 if(isset($_GET['page'])){
 	$page=$_GET['page'];
 } else {

@@ -90,7 +90,7 @@ if ($login_session != $data->username){
                         echo '<td class="font-weight-bold">'.$user -> password.'</td>';
                         echo '<td class="font-weight-bold">'.$user -> email.'</td>';
                         echo '<td class="font-weight-bold">'.$user -> role.'</td>';
-                        echo '<td><a class="btn btn-primary text-white btn-block" href="UserEditor.php?user='.$user->username."&id=".$user->id.'">Edit</a></td>';
+                        echo '<td><a class="btn btn-primary text-white btn-block" href="UserEditor.php?user='.$user->username.'">Edit</a></td>';
                         echo '</tr>';
                       }
 

@@ -11,6 +11,15 @@
 		return $data;
  	}
 
+ 	 	public function NumComments(){
+ 		$pdo = $this->Connect();
+ 		$sql = "SELECT COUNT(*) FROM Comments";
+		$stmt = $pdo->prepare($sql);
+		$stmt->execute();
+		$data = $stmt->fetchColumn();
+		return $data;
+ 	}
+
  	public function newComment($username,$comment,$postid){
  		$pdo = $this->Connect();
 		$sql = "INSERT INTO Comments(username,Comment,PostID) VALUES(:username,:comment,:id)";

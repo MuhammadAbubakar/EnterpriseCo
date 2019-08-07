@@ -77,42 +77,67 @@ if ($login_session != $data->username){
                }
                ?>
             
+
+            
+
             
           <form method="POST" action="includes/editUser.php">
-            <input type="text" name="id" id="id" hidden="" value="<?php echo $_GET['id']; ?>">
-            <div class="form-group row">
-              <label for="username" class="col-sm-2 col-form-label">Username: </label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" name="username" id="username" value="<?php echo $userData->username;  ?>">
+            <input type="text" name="id" id="id" hidden="" value="<?php echo $userData->id; ?>">
+            <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <input type="text" name="firstName" id="firstName" class="form-control" placeholder="First name" value="<? echo $userData->fname ?>" autofocus="autofocus">
+                  <label for="firstName">First name</label>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Last name" value="<? echo $userData->lname ?>">
+                  <label for="lastName">Last name</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+            <div class="form-group">
+
+              <div class="form-label-group">
+              <input type="text" class="form-control" name="username" placeholder="username" id="username" value="<? echo $userData->username ?>">
+              <label for="username">Username</label>
               </div>
             </div>
 
-            <div class="form-group row">
-              <label for="password" class="col-sm-2 col-form-label">Password: </label>
-              <div class="col-sm-10">
-                <input type="password" class="form-control" name="password" id="password" value="">
+            <div class="form-group">
+              <div class="form-label-group">
+                <input type="text" value="<? echo $userData->password ?>" class="form-control" name="password" id="password" placeholder="Password">
+                <label for="password">Password</label>
+            </div>
+          </div>
+
+            <div class="form-group">
+              <div class="form-label-group">
+                <input type="text" class="form-control" name="Email" id="Email" placeholder="Email Address" value="<? echo $userData->email ?>">
+                <label for="Email">Email Address</label>
               </div>
             </div>
-            <div class="form-group row">
-              <label for="Email" class="col-sm-2 col-form-label">User Email: </label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" name="Email" id="Email" value="<?php echo $userData->email; ?>">
+
+            <div class="form-group">
+              <div class="form-label-group">
+                <input type="text" class="form-control" name="role" id="role" placeholder="Role" value="<? echo $userData->role ?>">
+                <label for="Email">Role</label>
               </div>
             </div>
-            <div class="form-group row">
-              <label for="role" class="col-sm-2 col-form-label">Role: </label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" name="role" id="role" value="<?php echo $userData->role; ?>">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="avatar" class="col-sm-2 col-form-label">Avatar: </label>
-              <div class="col-sm-10">
-                <input type="text" name="avatar" id="avatar" class="form-control" value="<?php echo $userData->avatar; ?>">
+
+            <div class="form-group">
+              <div class="form-label-group">             
+                <input type="text" name="avatar" id="avatar" class="form-control" placeholder="Avatar URL" value="<? echo $userData->avatar ?>">
+                <label for="avatar" class="col-sm-2 col-form-label">Avatar URL</label>
               </div>
             </div>
             <div class="justify-content-center text-center">
-              <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+              <button type="submit" class="btn btn-primary btn-block">Submit</button>
             </div>
           </form>
             </div>

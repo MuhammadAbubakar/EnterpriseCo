@@ -48,14 +48,14 @@ class User extends Database{
 		}
     }
 
-    public function newUser($username,$password,$email,$role){
+    public function newUser($fname,$lname,$username,$password,$email,$role,$avatar){
         if ($this->checkUser($username) == "User Exit") {
             return 'Username Exist';
         } else {
             $pdo = $this->Connect();
-            $sql = "INSERT INTO users(username,password,email,role) VALUES(:username,:password,:email,:role)";
+            $sql = "INSERT INTO users(fname,lname,username,password,email,role,avatar) VALUES(:fname,:lname,:username,:password,:email,:role,:avatar)";
             $stmt = $pdo->prepare($sql);
-            $stmt->execute(['username'=>$username,'password'=>md5($password),"email"=>$email,"role"=>$role]);
+            $stmt->execute(['fname'=>$fname,'lname'=>$lname,'username'=>$username,'password'=>md5($password),"email"=>$email,"role"=>$role,"avatar"=>$avatar]);
             return 'Account Has Been Created';   
         }
     }
@@ -68,16 +68,30 @@ class User extends Database{
 		return 'Username Removed';
     }
 
-    public function updateUser($id,$username,$password,$email,$role,$avatar){
+    public function updateUser($id,$firstName,$lastName,$username,$password,$email,$role,$avatar){
     	$pdo = $this->Connect();
         $user = $this->getUserData($username);
+
+        if ($user->fname == $firstName) {
+                $newFname = $user->fname;
+            } else {
+                $newFname = $firstName;
+            }
+
+        if ($user->lname == $lastName) {
+                $newLname = $user->lname;
+            } else {
+                $newLname = $lastName;
+            }
+
         if ($user->username == $username) {
                 $newUser = $user->username;
             } else {
                 $newUser = $username;
             }
 
-            if ($user->password == md5($password)) {
+
+            if ($user->password == $password) {
                 $newPassword = $user->password;
             } else {
                 $newPassword = md5($password);
@@ -100,14 +114,17 @@ class User extends Database{
                 $newAvatar = $avatar;
             }
 
-    	$sql = "UPDATE users SET username = :username,
+    	$sql = "UPDATE users SET 
+        fname = :fname,
+        lname = :lname,
+        username = :username,
         password = :password,
-        email=:email,
-        role=:role,
-        avatar=:avatar WHERE id = :id";
+        email = :email,
+        role = :role,
+        avatar = :avatar WHERE id = :id";
 
 		$stmt = $pdo->prepare($sql);
-		$stmt->execute(['username'=>$newUser,'password'=>$newPassword,'email'=>$newEmail,'role'=>$newRole,'avatar'=>$newAvatar,'id'=>$id]);
+		$stmt->execute(['fname'=>$newFname,'lname'=>$newLname,'username'=>$newUser,'password'=>$newPassword,'email'=>$newEmail,'role'=>$newRole,'avatar'=>$newAvatar,'id'=>$id]);
 		return 'Username Updated';
     }
 }

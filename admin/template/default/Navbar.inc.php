@@ -14,7 +14,6 @@
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <a class="dropdown-item" href="homeEditor.php">Front-End Editor</a>
           <a class="dropdown-item" href="settings.php">Website Settings</a>
-          <a class="dropdown-item" href="wordfilter.php">Word Filter</a>
         </div>
       </li>
     <li class="nav-item dropdown">
@@ -38,13 +37,6 @@
         <a class="nav-link" href="viewComments.php">
           <i class="fas fa-fw fa-comments"></i>
           <span>Manage Comments</span></a>
-      </li>
-
-
-      <li class="nav-item">
-        <a class="nav-link" href="editTickets.php">
-          <i class="fas fa-fw fa-life-ring"></i>
-          <span>Manage Tickets</span></a>
       </li>
 
       <li class="nav-item">

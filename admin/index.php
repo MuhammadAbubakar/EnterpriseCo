@@ -3,12 +3,14 @@ require '../functions/config.inc.php';
 include '../functions/orders.php';
 include '../functions/posts.php';
 include 'session.php';
+include '../functions/comments.php';
 
 if ($login_session != $data->username){
     exit(header("Location: logout.php"));
   }
   $index = new Order;
   $post = new Posts;
+  $comments = new Comments;
   $orders = $index->getAllOrders();
 ?>
 <!DOCTYPE html>
@@ -66,7 +68,7 @@ if ($login_session != $data->username){
                 </div>
                 <div class="mr-5"><? echo $post->numRows(); ?> New Posts!</div>
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
+              <a class="card-footer text-white clearfix small z-1" href="viewPosts.php">
                 <span class="float-left">View Details</span>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
@@ -82,7 +84,7 @@ if ($login_session != $data->username){
                 </div>
                 <div class="mr-5"><?php echo $user->numUsers(); ?> Users!</div>
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
+              <a class="card-footer text-white clearfix small z-1" href="viewUsers.php">
                 <span class="float-left">View Details</span>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
@@ -98,7 +100,7 @@ if ($login_session != $data->username){
                 </div>
                 <div class="mr-5"><?php echo $index->numOfOrders(); ?> New Orders!</div>
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
+              <a class="card-footer text-white clearfix small z-1" href="index.php">
                 <span class="float-left">View Details</span>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
@@ -110,11 +112,11 @@ if ($login_session != $data->username){
             <div class="card text-white bg-danger o-hidden h-100">
               <div class="card-body">
                 <div class="card-body-icon">
-                  <i class="fas fa-fw fa-life-ring"></i>
+                  <i class="fas fa-fw fa-comments"></i>
                 </div>
-                <div class="mr-5">13 New Tickets!</div>
+                <div class="mr-5"><?php echo $comments->NumComments(); ?> New Comments!</div>
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
+              <a class="card-footer text-white clearfix small z-1" href="viewComments.php">
                 <span class="float-left">View Details</span>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
