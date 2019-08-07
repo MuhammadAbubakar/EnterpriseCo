@@ -11,11 +11,31 @@
 		return $data;
  	}
 
+
+ 	public function getAllPostsByCat($page,$per_page,$category){
+ 		$x = ($page - 1) * $per_page;
+ 		$pdo = $this->Connect();
+ 		$sql = "SELECT * FROM Posts WHERE category = :cat LIMIT $x, $per_page";
+		$stmt = $pdo->prepare($sql);
+		$stmt->execute(['cat'=>$category]);
+		$data = $stmt->fetchAll();
+		return $data;
+ 	}
+
 	public function getPost($id){
 		$pdo = $this->Connect();
 		$sql = "SELECT * FROM Posts WHERE id = ?";
 		$stmt = $pdo->prepare($sql);
 		$stmt->execute([$id]);
+		$data = $stmt->fetch();
+		return $data;
+	}
+
+	public function getCatNameBySlug($slug){
+		$pdo = $this->Connect();
+		$sql = "SELECT * FROM Categories WHERE slug = ?";
+		$stmt = $pdo->prepare($sql);
+		$stmt->execute([$slug]);
 		$data = $stmt->fetch();
 		return $data;
 	}
@@ -28,6 +48,7 @@
 		$data = $stmt->fetchColumn();
 		return $data;
 	}
+
  	public function newPost(){
  		
  	}
@@ -39,5 +60,8 @@
  	public function deletePost($id){
  		
  	}    
+
+
+
  }
 ?>

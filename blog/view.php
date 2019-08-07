@@ -1,18 +1,22 @@
 <?php
 $id = $_GET['id'];
 include '../functions/config.inc.php';
+include 'session.php';
 include '../functions/posts.php';
 include '../functions/comments.php';
+include '../functions/settings.php';
 
 $post = new Posts;
 $data = $post->getPost($id);
-$username = 'admin';
+
+$settings = new Settings;
+$setting = $settings->getSettings();
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
   $newComment = new Comments;
   $mycomment = "<p>".$_POST['comment']."</p>";
   $mycomment = str_replace("\n","<br />",$mycomment);
-  $msg = $newComment->newComment($username,$mycomment,$id);
+  $msg = $newComment->newComment($login_session,$mycomment,$id);
 }
 ?>
 <!DOCTYPE html>
@@ -25,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title><? echo $data -> Title; ?> - My Blog</title>
+  <title><? echo $data -> Title; ?> - <? echo $setting->Title; ?></title>
 
   <!-- Bootstrap core CSS -->
    <link href="../src/css/bootstrap.min.css" rel="stylesheet">
@@ -38,27 +42,36 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <body>
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-      <a class="navbar-brand" href="#">Blog</a>
+      <a class="navbar-brand" href="index.php"><?php echo $setting->Title; ?></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home
+            <a class="nav-link" href="index.php">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="../contact.php">Contact Us</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+          <li class="nav-item"><b class="navbar-text">|</b></li>
+          <li class="nav-item dropdown">
+           <?php
+            if (isset($login_session)) {
+              echo "<span class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Welcome ".$login_session."</span>"; 
+              echo '<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Settings</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="logout.php">Log Out</a>
+        </div>';
+            } else {
+              echo '<a class="nav-link" href="login.php">Login/Register</a>';
+            }
+            ?>
           </li>
         </ul>
       </div>
@@ -100,26 +113,33 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         <hr>
 
         <!-- Comments Form -->
-        <div class="card my-4">
+        <?php 
+        if (isset($login_session)) {
+          echo '<div class="card my-4">
           <h5 class="card-header">Leave a Comment:</h5>
           <div class="card-body">
-            <form method="POST">
+            <form method="POST">';
               
-                <?php if(isset($msg)){
+                if(isset($msg)){
                   echo '<div class="alert alert-success text-light font-weight-bold">';
                   echo  $msg;
                   echo '</div>';
                 }
-              ?>
+            
              
-              <div class="form-group">
+              echo '<div class="form-group">
                 <textarea name="comment" id="comment" class="form-control" rows="3"></textarea>
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
               
             </form>
           </div>
-        </div>
+        </div>';
+        } else {
+          
+        }
+
+        ?>
 
         <!-- Single Comment -->
         <?php
@@ -155,9 +175,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   <!-- /.container -->
 
   <!-- Footer -->
-  <footer class="py-5 bg-dark">
+  <footer class="py-5 bg-primary">
     <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+      <p class="m-0 text-center text-white">Copyright &copy; <?php echo $setting->Title; ?> 2019</p>
     </div>
     <!-- /.container -->
   </footer>

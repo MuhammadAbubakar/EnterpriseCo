@@ -1,10 +1,8 @@
 <?php
 include '../functions/config.inc.php';
  include '../functions/posts.php';
+ include '../functions/settings.php';
  include 'session.php';
- if ($login_session != $data->username){
-    exit(header("Location: logout.php"));
-  }
 if(isset($_GET['page'])){
 	$page=$_GET['page'];
 } else {
@@ -15,6 +13,8 @@ if(isset($_GET['page'])){
  $data = $posts->getAllPosts($page,$per_page);
  $rowCount = $posts->numRows();
  $total_pages = ceil($rowCount/$per_page);
+ $class = new Settings();
+ $settings = $class->getSettings();
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,10 +22,10 @@ if(isset($_GET['page'])){
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
+  <meta name="description" content="<?php echo $settings->Description; ?>">
   <meta name="author" content="">
 
-  <title>Blog Home - EnterpriseCo</title>
+  <title>Blog - <?php echo $settings->Title; ?></title>
 
   <!-- Bootstrap core CSS -->
   <link href="../src/css/bootstrap.min.css" rel="stylesheet">
@@ -37,27 +37,36 @@ if(isset($_GET['page'])){
 <body>
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-      <a class="navbar-brand" href="#">Blog</a>
+      <a class="navbar-brand" href="index.php"><?php echo $settings->Title; ?></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home
+            <a class="nav-link" href="index.php">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="../contact.php">Contact Us</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+          <li class="nav-item"><b class="navbar-text">|</b></li>
+          <li class="nav-item dropdown">
+           <?php
+            if (isset($login_session)) {
+              echo "<span class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Welcome ".$login_session."</span>"; 
+              echo '<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Settings</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="logout.php">Log Out</a>
+        </div>';
+            } else {
+              echo '<a class="nav-link" href="login.php">Login/Register</a>';
+            }
+            ?>
           </li>
         </ul>
       </div>
@@ -134,9 +143,9 @@ if(isset($_GET['page'])){
   <!-- /.container -->
 
   <!-- Footer -->
-  <footer class="py-5 bg-dark">
+  <footer class="py-5 bg-primary">
     <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+      <p class="m-0 text-center text-white">Copyright &copy; <?php echo $settings->Title; ?> 2019</p>
     </div>
     <!-- /.container -->
   </footer>
