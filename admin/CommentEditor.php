@@ -66,7 +66,7 @@ if ($login_session != $data->username){
         <div class="card mx-auto" style="width: 50rem;">
           <div class="card-header">
             <i class="fas fa-wrench"></i>
-            WebSite Settings</div>
+            Comment Editor</div>
         <div class="card-body">
           <div class="container">
 

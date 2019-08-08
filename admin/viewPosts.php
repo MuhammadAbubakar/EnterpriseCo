@@ -1,14 +1,14 @@
 <?php
 require '../functions/config.inc.php';
 include 'session.php';
-include '../functions/comments.php';
+include '../functions/posts.php';
 
 
 if ($login_session != $data->username){
     exit(header("Location: logout.php"));
   }
-  $comment = new Comments;
-  $getComments = $comment->getComments();
+  $post = new Posts;
+  $getPost = $post->getAllPostsAdmin();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +21,7 @@ if ($login_session != $data->username){
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>EnterpriseCo - View Comments</title>
+  <title>EnterpriseCo - View Posts</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -52,7 +52,7 @@ if ($login_session != $data->username){
           <li class="breadcrumb-item">
             <a href="#">Dashboard</a>
           </li>
-          <li class="breadcrumb-item active">Overview</li>
+          <li class="breadcrumb-item active">Posts</li>
         </ol>
 
         <!-- Icon Cards-->
@@ -62,11 +62,11 @@ if ($login_session != $data->username){
 
 
         <!-- DataTables Example -->
-      <form method='POST' action="includes/removeComment.php">
+      <form method='POST' action="includes/removePost.php">
         <div class="card mb-3">
           <div class="card-header">
-            <i class="fas fa-table"></i>
-           Comments</div>
+            <a href="newPost.php" class="btn btn-primary text-white">New Post</a>
+          </div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -75,8 +75,9 @@ if ($login_session != $data->username){
                     <th>#</th>
                     <th>ID</th>
                     <th>Username</th>
-                    <th>Comment</th>
-                    <th>Post ID</th>
+                    <th>Image</th>
+                    <th>Post Title</th>
+                    <th>Category</th>
                     <th>Settings</th>
                   </tr>
                 </thead>
@@ -84,14 +85,15 @@ if ($login_session != $data->username){
                 <tbody>
                  <?php
                  
-                  foreach ($getComments as $comments) {
+                  foreach ($getPost as $post) {
                     echo "<tr>";
-                    echo '<td><input type="checkbox" name="delete[]" value="'.$comments->id.'"></td>';
-                      echo '<td class="font-weight-bold">'.$comments -> id.'</td>';
-                        echo '<td class="font-weight-bold">'.$comments -> username.'</td>';
-                        echo '<td class="font-weight-bold">'.$comments -> Comment.'</td>';
-                        echo '<td class="font-weight-bold">'.$comments -> PostID.'</td>';
-                        echo '<td><a class="btn btn-primary text-white btn-block" href="CommentEditor.php?id='.$comments->id.'">Edit</a></td>';
+                    echo '<td><input type="checkbox" name="delete[]" value="'.$post->id.'"></td>';
+                      echo '<td class="font-weight-bold">'.$post -> id.'</td>';
+                      echo '<td class="font-weight-bold">'.$post -> Author.'</td>';
+                        echo '<td class="font-weight-bold"><img width="50" height="50" src="'.$post -> image.'"></img></td>';
+                        echo '<td class="font-weight-bold">'.$post -> Title.'</td>';
+                        echo '<td class="font-weight-bold">'.$post -> category.'</td>';
+                        echo '<td><a class="btn btn-primary text-white btn-block" href="PostEditor.php?id='.$post->id.'">Edit</a></td>';
                         echo '</tr>';
                       }
 
@@ -103,7 +105,7 @@ if ($login_session != $data->username){
           <div class="card-footer small text-muted">
             <?php 
             if (isset($_GET['msg'])) {
-              echo '<div class="alert alert-success">Comments has been removed</div>';
+              echo '<div class="alert alert-success">Post has been removed</div>';
             }
              ?>
       <?php echo "

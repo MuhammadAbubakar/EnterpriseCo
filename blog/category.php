@@ -8,6 +8,7 @@ if(isset($_GET['page'])){
 } else {
 	$page=1;
 }
+
  $per_page = 5;
  $posts = new Posts;
  $slug = $_GET['id'];
@@ -15,8 +16,10 @@ if(isset($_GET['page'])){
  $data = $posts->getAllPostsByCat($page,$per_page,$catname->name);
  $rowCount = $posts->numRows();
  $total_pages = ceil($rowCount/$per_page);
+
  $class = new Settings();
  $settings = $class->getSettings();
+ $services = $class->getServices();
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -132,7 +135,7 @@ if(isset($_GET['page'])){
       <!-- Sidebar Widgets Column -->
       <div class="col-md-4">
       <?php 
-      include 'widgets/search.php';
+      include 'widgets/newsletter.php';
       include 'widgets/catig.php';
       include 'widgets/starter.php';
       ?>

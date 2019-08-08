@@ -74,15 +74,15 @@ body {
 }
 
 
-  .banner{
+ .banner{
   	background-image: url('../img/startup.jpg');
- 	  background-size: cover;
- 	  background-repeat: no-repeat;
+ 	background-size: cover;
+ 	background-repeat: no-repeat;
   	background-size: cover;
   	position: relative;
   	background-attachment: fixed;
- 	  color: white;
- 	  overflow-y: hidden;
+ 	color: white;
+ 	overflow-y: hidden;
     transition: 1s;
   }
 

@@ -34,6 +34,12 @@
       </li>
 
       <li class="nav-item">
+        <a class="nav-link" href="viewCategories.php">
+          <i class="fas fa-fw fa-tags"></i>
+          <span>Manage Categories</span></a>
+      </li>
+
+      <li class="nav-item">
         <a class="nav-link" href="viewComments.php">
           <i class="fas fa-fw fa-comments"></i>
           <span>Manage Comments</span></a>

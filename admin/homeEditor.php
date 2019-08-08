@@ -86,6 +86,9 @@ if ($login_session != $data->username){
 		      <option value="../tags.php">tags.php</option>
 		      <option value="../send.php">send.php</option>
 		      <option value="../404.html">404.html</option>
+          <option value="../components/footer.php">footer.php</option>
+          <option value="../blog/index.php">blog/index.php</option>
+          <option value="../blog/category.php">blog/category.php</option>
 		    </select>
 		    <div class="pt-2">
 		    	<button type="submit" class="btn btn-primary btn-block">Edit</button>

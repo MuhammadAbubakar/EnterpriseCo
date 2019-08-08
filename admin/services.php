@@ -1,12 +1,12 @@
 <?php
 require '../functions/config.inc.php';
-include '../functions/services.php';
+include '../functions/settings.php';
 include 'session.php';
 
 if ($login_session != $data->username){
     exit(header("Location: logout.php"));
   }
-  $settings = new Services;
+  $settings = new Settings;
   $wSettings = $settings->getServices();
 ?>
 <!DOCTYPE html>

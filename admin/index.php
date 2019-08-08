@@ -8,6 +8,11 @@ include '../functions/comments.php';
 if ($login_session != $data->username){
     exit(header("Location: logout.php"));
   }
+  
+  if ($data->role != "administrator") {
+    exit(header("Location: logout.php"));
+  }
+
   $index = new Order;
   $post = new Posts;
   $comments = new Comments;

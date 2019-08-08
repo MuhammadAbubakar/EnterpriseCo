@@ -49,7 +49,7 @@ if ($login_session != $data->username){
           <li class="breadcrumb-item">
             <a href="#">Dashboard</a>
           </li>
-          <li class="breadcrumb-item active">Overview</li>
+          <li class="breadcrumb-item active">Users</li>
         </ol>
 
         <!-- Icon Cards-->
@@ -63,7 +63,7 @@ if ($login_session != $data->username){
         <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-table"></i>
-           Comments</div>
+           Users</div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

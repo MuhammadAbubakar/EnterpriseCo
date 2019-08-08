@@ -5,7 +5,10 @@
     $user_check = $_SESSION['login_user'];
     $data = $user->getUserData($user_check); 
 	$login_session = $data->username;
-   if(!isset($_SESSION['login_user'])){
+	  if ($data->role != "administrator") {
+	    exit(header("Location: ../blog/profile.php?user=".$login_session));
+	  }
+    if(!isset($_SESSION['login_user'])){
       exit(header("Location: login.php"));
-   }
+    }
 ?>

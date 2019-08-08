@@ -67,9 +67,10 @@ $msg = 'SQL file imported successfully';
 			   </div>
 			   <form method="POST">
 			   <div class="alert alert-light text-center border-danger">
-			   	<p class="lead"><b>this page going to install EnterpriseCo </br> default settings <br> 
-			   		admin login details
-			   		<ul class="list-unstyled">
+			   	<p class="lead h2"><b>this page going to install EnterpriseCo default settings <br> 
+			   		<hr>
+			   		<p class="h3">admin login details</p>
+			   		<ul class="list-unstyled h4">
 			   			<li class="">Username: admin</li>
 			   			<li class="">Password: admin</li>
 			   		</ul>

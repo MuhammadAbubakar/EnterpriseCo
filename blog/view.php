@@ -11,6 +11,7 @@ $data = $post->getPost($id);
 
 $settings = new Settings;
 $setting = $settings->getSettings();
+$services = $settings->getServices();
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
   $newComment = new Comments;
@@ -162,7 +163,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       <!-- Sidebar Widgets Column -->
       <div class="col-md-4">
       <?php 
-      include 'widgets/search.php';
+      include 'widgets/newsletter.php';
       include 'widgets/catig.php';
       include 'widgets/starter.php';
       ?>
