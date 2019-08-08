@@ -69,16 +69,11 @@ v1.0
 ## Coming Soon
 ```
 
-v3.0
-  - Frontend Editor
-  - Word Filter
-  - User Manager
-  - Website Settings [ Title, Description, Favicon ]
-  - Built-in CMS System [ Posts, Comments, and Like System ]
-  - MailChimp Integration
-  - Advanced Dashboard
-  - Ajax Requests insted of normal HTML Submits
-  - Rewrite Project in OOP with PDO Connection
+v4.0
+  - Simple Projects Manager [ Add, Delete, Edit Projects] ❌️
+  - Simple and Secure Image Uploader ❌️
+  - REST API v1.0 ❌️
+  - AutoUpdater [ Check,Update ] ❌️
   
 ```
 
