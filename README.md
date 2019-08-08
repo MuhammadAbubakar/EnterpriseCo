@@ -24,6 +24,20 @@ a Simple Business Website Software bulit with Bootstrap and PHP
 ## Change Logs
 
 ```
+v3.0
+  - Frontend Editor [ ACE Editor ] ✔️
+  - User Manager [ Add, Edit, Delete ] ✔️
+  - Comments Manager ✔️
+  - Simple User Profile ✔️
+  - Website Settings [ Title, Description, Favicon ] ✔️
+  - Comments Manager ✔️
+  - Posts Manager ✔️
+  - Built-in CMS System [ Posts, Comments, Categories, Login To Comment System] ✔️
+  - MailChimp Integration ✔️
+  - Google Analtyics Integration ✔️
+  - Advanced Dashboard ✔️
+  - Rewrite Project in OOP with PDO Connection ✔️
+  
 v2.0
   1. Full RTL Support [ تم تغير لغة المشروع للعربي ]
   2. Simple Dashboard System
