@@ -97,6 +97,7 @@ v4.0
   - Simple and Secure Image Uploader ❌️
   - REST API v1.0 ❌️
   - AutoUpdater [ Check,Update ] ❌️
+  - Bug Fixes
   
 ```
 
