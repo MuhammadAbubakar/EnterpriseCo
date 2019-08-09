@@ -79,14 +79,14 @@ if ($login_session != $data->username){
             <div class="form-row">
               <div class="col-md-6">
                 <div class="form-label-group">
-                  <input type="text" id="firstName" class="form-control" placeholder="First name" required="required" autofocus="autofocus">
+                  <input type="text" id="firstName" name="fname" class="form-control" placeholder="First name" required="required" autofocus="autofocus">
                   <label for="firstName">First name</label>
                 </div>
               </div>
 
               <div class="col-md-6">
                 <div class="form-label-group">
-                  <input type="text" id="lastName" class="form-control" placeholder="Last name" required="required">
+                  <input type="text" id="lastName" name="lname" class="form-control" placeholder="Last name" required="required">
                   <label for="lastName">Last name</label>
                 </div>
               </div>
