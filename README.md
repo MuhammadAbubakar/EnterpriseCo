@@ -62,31 +62,31 @@ v3.0
   - Rewrite Project in OOP with PDO Connection ✔️
   
 v2.0
-  1. Full RTL Support [ تم تغير لغة المشروع للعربي ]
-  2. Simple Dashboard System
-    - You can review your clients request
-    - You can change the ticket status [ Open / Pending / Closed ]
-    - Full Email Integration
-    - You can answare your clients orders using your dashboard
-    - Full WYSIWYG Integration using Modifed SCEditor [ New Colors ]
-    - Secure Login / Regeister / Password Recovery System
+  1. Full RTL Support [ تم تغير لغة المشروع للعربي ] ✔️
+  2. Simple Dashboard System ✔️
+    - You can review your clients request ✔️
+    - You can change the ticket status [ Open / Pending / Closed ] ✔️
+    - Full Email Integration ✔️
+    - You can answare your clients orders using your dashboard ✔️
+    - Full WYSIWYG Integration using Modifed SCEditor [ New Colors ] ✔️
+    - Secure Login / Regeister / Password Recovery System ✔️
     
 
 v1.5
-  1. New Pricing Table
-  2. Animated Navbar
-  3. 404 Page
-  4. Secure Contact Form
-    - XSS Filter
-    - Name Validator
-    - Email Checker
-    - Message Cleaner
-    - MySQL Integration
+  1. New Pricing Table ✔️
+  2. Animated Navbar ✔️
+  3. 404 Page ✔️
+  4. Secure Contact Form ✔️
+    - XSS Filter ✔️
+    - Name Validator ✔️
+    - Email Checker ✔️
+    - Message Cleaner ✔️
+    - MySQL Integration ✔️
     
     
   
 v1.0
-  - Initial Release
+  - Initial Release ✔️
 ```
 
 ## Coming Soon
@@ -95,9 +95,8 @@ v1.0
 v4.0
   - Simple Projects Manager [ Add, Delete, Edit Projects] ❌️
   - Simple and Secure Image Uploader ❌️
-  - REST API v1.0 ❌️
   - AutoUpdater [ Check,Update ] ❌️
-  - Bug Fixes
+  - Bug Fixes ❌️
   
 ```
 
