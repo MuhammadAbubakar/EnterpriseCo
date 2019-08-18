@@ -99,6 +99,7 @@ v4.0
   - reCaptcha Integration ✔️
   - Search Engine Optimization Settings ❌️
   - Widget Manager ✔️
+  - Salted MD5 Hashing For Better Protection ✔️
   - Browser Caching Enabled ✔️
   - UI Issues Fixed ✔️
   - Bug Fixes ✔️
