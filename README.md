@@ -96,7 +96,11 @@ v4.0
   - Simple Projects Manager [ Add, Delete, Edit Projects] ❌️
   - Simple and Secure Image Uploader ❌️
   - AutoUpdater [ Check,Update ] ❌️
-  - Bug Fixes ❌️
+  - reCaptcha Integration ✔️
+  - Search Engine Optimization Settings ❌️
+  - Widget Manager ✔️
+  - UI Issues Fixed ✔️
+  - Bug Fixes ✔️
   
 ```
 
